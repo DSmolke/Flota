@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests package &mdash; cars-service 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="app.validator package" href="app.validator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            cars-service
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">cars</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">app package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tests package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tests.conftest">tests.conftest module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.conftest.app"><code class="docutils literal notranslate"><span class="pre">app()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.conftest.car_data"><code class="docutils literal notranslate"><span class="pre">car_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.conftest.client"><code class="docutils literal notranslate"><span class="pre">client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.conftest.desired_response_data"><code class="docutils literal notranslate"><span class="pre">desired_response_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.conftest.sqlalchemy_database_uri"><code class="docutils literal notranslate"><span class="pre">sqlalchemy_database_uri()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tests.test_car_routes">tests.test_car_routes module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_crate_car_with_invalid_data"><code class="docutils literal notranslate"><span class="pre">test_crate_car_with_invalid_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_create_car_with_duplicated_entry"><code class="docutils literal notranslate"><span class="pre">test_create_car_with_duplicated_entry()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_create_car_with_valid_data"><code class="docutils literal notranslate"><span class="pre">test_create_car_with_valid_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_delete_car_by_id"><code class="docutils literal notranslate"><span class="pre">test_delete_car_by_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_delete_car_with_invalid_id"><code class="docutils literal notranslate"><span class="pre">test_delete_car_with_invalid_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_get_all_cars"><code class="docutils literal notranslate"><span class="pre">test_get_all_cars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_get_one_by_id"><code class="docutils literal notranslate"><span class="pre">test_get_one_by_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_get_one_by_id_that_not_exist"><code class="docutils literal notranslate"><span class="pre">test_get_one_by_id_that_not_exist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_update_car_by_id"><code class="docutils literal notranslate"><span class="pre">test_update_car_by_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_update_car_by_id_when_not_exists"><code class="docutils literal notranslate"><span class="pre">test_update_car_by_id_when_not_exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_car_routes.test_update_car_by_id_with_bad_data"><code class="docutils literal notranslate"><span class="pre">test_update_car_by_id_with_bad_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tests.test_create_app">tests.test_create_app module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_create_app.test_create_app"><code class="docutils literal notranslate"><span class="pre">test_create_app()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cars-service</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">cars</a></li>
+      <li class="breadcrumb-item active">tests package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tests.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tests-package">
+<h1>tests package<a class="headerlink" href="#tests-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-tests.conftest">
+<span id="tests-conftest-module"></span><h2>tests.conftest module<a class="headerlink" href="#module-tests.conftest" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.conftest.app">
+<span class="sig-prename descclassname"><span class="pre">tests.conftest.</span></span><span class="sig-name descname"><span class="pre">app</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/conftest.html#app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.conftest.app" title="Link to this definition"></a></dt>
+<dd><p>This method initializes and returns an instance of the Flask application with the necessary configurations and resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Flask application object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.conftest.car_data">
+<span class="sig-prename descclassname"><span class="pre">tests.conftest.</span></span><span class="sig-name descname"><span class="pre">car_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/conftest.html#car_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.conftest.car_data" title="Link to this definition"></a></dt>
+<dd><p>Get car data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the car data with the following keys:
+- “registration”: The registration number of the car.
+- “vin”: The Vehicle Identification Number (VIN) of the car.
+- “make”: The make of the car.
+- “model”: The model of the car.
+- “first_registration_date”: The date when the car was first registered.
+- “production_year”: The year when the car was produced.
+- “mileage”: The mileage of the car.
+- “fuel_consumption”: The fuel consumption of the car.
+- “fuel_type_id”: The ID of the fuel type of the car.
+- “vehicle_status_id”: The ID of the vehicle status of the car.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.conftest.client">
+<span class="sig-prename descclassname"><span class="pre">tests.conftest.</span></span><span class="sig-name descname"><span class="pre">client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FlaskClient</span></span></span><a class="reference internal" href="_modules/tests/conftest.html#client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.conftest.client" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>app</strong> – The Flask application instance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A FlaskClient instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.conftest.desired_response_data">
+<span class="sig-prename descclassname"><span class="pre">tests.conftest.</span></span><span class="sig-name descname"><span class="pre">desired_response_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/conftest.html#desired_response_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.conftest.desired_response_data" title="Link to this definition"></a></dt>
+<dd><p>Creates the desired response data by adding an “id” key to the car_data dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>car_data</strong> – A dictionary containing car data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified car_data dictionary with an additional “id” key.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.conftest.sqlalchemy_database_uri">
+<span class="sig-prename descclassname"><span class="pre">tests.conftest.</span></span><span class="sig-name descname"><span class="pre">sqlalchemy_database_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/conftest.html#sqlalchemy_database_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.conftest.sqlalchemy_database_uri" title="Link to this definition"></a></dt>
+<dd><p>Returns the SQLAlchemy database URI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The SQLAlchemy database URI as a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-tests.test_car_routes">
+<span id="tests-test-car-routes-module"></span><h2>tests.test_car_routes module<a class="headerlink" href="#module-tests.test_car_routes" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_crate_car_with_invalid_data">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_crate_car_with_invalid_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_crate_car_with_invalid_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_crate_car_with_invalid_data" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client object used to send the HTTP request</p></li>
+<li><p><strong>car_data</strong> – The data used to create the car</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This method is used to test the creation of a car with invalid data. It takes a <cite>client</cite> object and <cite>car_data</cite> as
+parameters. The <cite>client</cite> object is used to send an HTTP POST request
+* to the <cite>/car</cite> endpoint with the <cite>car_data</cite>. The <cite>car_data</cite> is modified by updating the <cite>“registration”</cite></p>
+<blockquote>
+<div><p>field to an invalid value.</p>
+</div></blockquote>
+<p>The method then asserts that the response status code is 400 (Bad Request) and
+the response JSON is <cite>{‘message’: “Invalid request”}</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_create_car_with_duplicated_entry">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_create_car_with_duplicated_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_create_car_with_duplicated_entry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_create_car_with_duplicated_entry" title="Link to this definition"></a></dt>
+<dd><p>Method to test the creation of a car with duplicated entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>flask.testing.FlaskClient</em>) – The client object for making HTTP requests.</p></li>
+<li><p><strong>car_data</strong> (<em>dict</em>) – The data for creating the car.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_create_car_with_valid_data">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_create_car_with_valid_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_create_car_with_valid_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_create_car_with_valid_data" title="Link to this definition"></a></dt>
+<dd><p>Test method to create a car with valid data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The test client for making requests.</p></li>
+<li><p><strong>car_data</strong> – The data for creating the car in JSON format.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_delete_car_by_id">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_delete_car_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_delete_car_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_delete_car_by_id" title="Link to this definition"></a></dt>
+<dd><p>Test deleting a car by its ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>flask.testing.FlaskClient</em>) – The Flask test client.</p></li>
+<li><p><strong>car_data</strong> (<em>dict</em>) – The data of the car to be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_delete_car_with_invalid_id">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_delete_car_with_invalid_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_delete_car_with_invalid_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_delete_car_with_invalid_id" title="Link to this definition"></a></dt>
+<dd><p>Test deleting a car that doesn’t exist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – A Flask test client object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_get_all_cars">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_get_all_cars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_get_all_cars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_get_all_cars" title="Link to this definition"></a></dt>
+<dd><p>Test the ‘GET /cars/all’ endpoint to retrieve all cars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The test client for making HTTP requests.</p></li>
+<li><p><strong>car_data</strong> – The JSON data of the car to be posted.</p></li>
+<li><p><strong>desired_response_data</strong> – The expected JSON data of the desired car response.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_get_one_by_id">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_get_one_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_get_one_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_get_one_by_id" title="Link to this definition"></a></dt>
+<dd><p>Test the GET /car/&lt;id&gt; endpoint for retrieving a car by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The test client.</p></li>
+<li><p><strong>car_data</strong> – The car data to be posted.</p></li>
+<li><p><strong>desired_response_data</strong> – The expected response data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_get_one_by_id_that_not_exist">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_get_one_by_id_that_not_exist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_get_one_by_id_that_not_exist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_get_one_by_id_that_not_exist" title="Link to this definition"></a></dt>
+<dd><p>Test method to check if getting a car by id that does not exist returns a 404 status code and a proper error message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – The HTTP client to use for sending requests.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_update_car_by_id">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_update_car_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_update_car_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_update_car_by_id" title="Link to this definition"></a></dt>
+<dd><p>Test the update_car_by_id method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>object</em>) – The client object used for making HTTP requests.</p></li>
+<li><p><strong>car_data</strong> (<em>dict</em>) – The data of the car to be updated.</p></li>
+<li><p><strong>desired_response_data</strong> (<em>dict</em>) – The desired response data that after creation of entity contains id.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_update_car_by_id_when_not_exists">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_update_car_by_id_when_not_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_update_car_by_id_when_not_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_update_car_by_id_when_not_exists" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>object</em>) – The client used to send the HTTP request.</p></li>
+<li><p><strong>car_data</strong> (<em>dict</em>) – The data of the car to be updated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_car_routes.test_update_car_by_id_with_bad_data">
+<span class="sig-prename descclassname"><span class="pre">tests.test_car_routes.</span></span><span class="sig-name descname"><span class="pre">test_update_car_by_id_with_bad_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_car_routes.html#test_update_car_by_id_with_bad_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_car_routes.test_update_car_by_id_with_bad_data" title="Link to this definition"></a></dt>
+<dd><p>Test the update_car_by_id_with_bad_data method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – The client used to send the request.</p>
+</dd>
+</dl>
+<p>:param</p>
+</dd></dl>
+
+</section>
+<section id="module-tests.test_create_app">
+<span id="tests-test-create-app-module"></span><h2>tests.test_create_app module<a class="headerlink" href="#module-tests.test_create_app" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_create_app.test_create_app">
+<span class="sig-prename descclassname"><span class="pre">tests.test_create_app.</span></span><span class="sig-name descname"><span class="pre">test_create_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqlalchemy_database_uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="reference internal" href="_modules/tests/test_create_app.html#test_create_app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_create_app.test_create_app" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sqlalchemy_database_uri</strong> – The SQLAlchemy database URI to use for creating the test Flask application.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The test Flask application object.</p>
+</dd>
+</dl>
+<p>This method is used to test the <cite>create_app</cite> function by asserting various conditions on the test Flask application object. It creates a test Flask application using the <cite>main</cite> function
+* and performs the following assertions:
+1. Asserts that the test Flask application object is not None.
+2. Asserts that the test Flask application object is an instance of the Flask class.
+3. Asserts that the SQLAlchemy database URI configuration property of the test Flask application matches the provided <cite>sqlalchemy_database_uri</cite> parameter.
+4. Asserts that the SQLALCHEMY_TRACK_MODIFICATIONS configuration property of the test Flask application is set to False.</p>
+<p>Note: This method does not return anything, as the purpose is to perform the assertions and verify the behavior of the <cite>create_app</cite> function.</p>
+</dd></dl>
+
+</section>
+<section id="module-tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tests" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app.validator.html" class="btn btn-neutral float-left" title="app.validator package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Damian Smolczynski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

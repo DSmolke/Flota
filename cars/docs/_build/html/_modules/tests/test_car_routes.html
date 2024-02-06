@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.test_car_routes &mdash; cars-service 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            cars-service
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">cars</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cars-service</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tests.test_car_routes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.test_car_routes</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<div class="viewcode-block" id="test_create_car_with_valid_data">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_create_car_with_valid_data">[docs]</a>
+<span class="k">def</span> <span class="nf">test_create_car_with_valid_data</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test method to create a car with valid data.</span>
+
+<span class="sd">    :param client: The test client for making requests.</span>
+<span class="sd">    :param car_data: The data for creating the car in JSON format.</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="mi">1</span></div>
+
+
+
+<div class="viewcode-block" id="test_create_car_with_duplicated_entry">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_create_car_with_duplicated_entry">[docs]</a>
+<span class="k">def</span> <span class="nf">test_create_car_with_duplicated_entry</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to test the creation of a car with duplicated entry.</span>
+
+<span class="sd">    :param client: The client object for making HTTP requests.</span>
+<span class="sd">    :type client: flask.testing.FlaskClient</span>
+<span class="sd">    :param car_data: The data for creating the car.</span>
+<span class="sd">    :type car_data: dict</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="n">response2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response2</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span>
+    <span class="k">assert</span> <span class="n">response2</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s2">&quot;Duplicate entry &#39;DPL96RR&#39; for key &#39;cars.registration&#39;&quot;</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_crate_car_with_invalid_data">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_crate_car_with_invalid_data">[docs]</a>
+<span class="k">def</span> <span class="nf">test_crate_car_with_invalid_data</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param client: The client object used to send the HTTP request</span>
+<span class="sd">    :param car_data: The data used to create the car</span>
+<span class="sd">    :return: None</span>
+
+<span class="sd">    This method is used to test the creation of a car with invalid data. It takes a `client` object and `car_data` as</span>
+<span class="sd">    parameters. The `client` object is used to send an HTTP POST request</span>
+<span class="sd">    * to the `/car` endpoint with the `car_data`. The `car_data` is modified by updating the `&quot;registration&quot;`</span>
+<span class="sd">     field to an invalid value.</span>
+
+<span class="sd">    The method then asserts that the response status code is 400 (Bad Request) and</span>
+<span class="sd">    the response JSON is `{&#39;message&#39;: &quot;Invalid request&quot;}`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">invalid_car_data</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">car_data</span><span class="p">}</span>
+    <span class="n">invalid_car_data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;registration&quot;</span><span class="p">:</span> <span class="s2">&quot;DPL96RR R&quot;</span><span class="p">})</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">invalid_car_data</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s2">&quot;Invalid request&quot;</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_one_by_id">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_get_one_by_id">[docs]</a>
+<span class="k">def</span> <span class="nf">test_get_one_by_id</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">,</span> <span class="n">desired_response_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test the GET /car/&lt;id&gt; endpoint for retrieving a car by ID.</span>
+
+<span class="sd">    :param client: The test client.</span>
+<span class="sd">    :param car_data: The car data to be posted.</span>
+<span class="sd">    :param desired_response_data: The expected response data.</span>
+<span class="sd">    :return: None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;car/1&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="n">desired_response_data</span>
+    <span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></div>
+
+
+<div class="viewcode-block" id="test_get_one_by_id_that_not_exist">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_get_one_by_id_that_not_exist">[docs]</a>
+<span class="k">def</span> <span class="nf">test_get_one_by_id_that_not_exist</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test method to check if getting a car by id that does not exist returns a 404 status code and a proper error message.</span>
+
+<span class="sd">    :param client: The HTTP client to use for sending requests.</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/car/1&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+    <span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car does not exist&quot;</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="test_delete_car_by_id">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_delete_car_by_id">[docs]</a>
+<span class="k">def</span> <span class="nf">test_delete_car_by_id</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test deleting a car by its ID.</span>
+
+<span class="sd">    :param client: The Flask test client.</span>
+<span class="sd">    :type client: flask.testing.FlaskClient</span>
+<span class="sd">    :param car_data: The data of the car to be created.</span>
+<span class="sd">    :type car_data: dict</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;/car/1&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car has been deleted&quot;</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_delete_car_with_invalid_id">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_delete_car_with_invalid_id">[docs]</a>
+<span class="k">def</span> <span class="nf">test_delete_car_with_invalid_id</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test deleting a car that doesn&#39;t exist</span>
+
+<span class="sd">    :param client: A Flask test client object.</span>
+<span class="sd">    :return: None</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;/car/1&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car not found&quot;</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_all_cars">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_get_all_cars">[docs]</a>
+<span class="k">def</span> <span class="nf">test_get_all_cars</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">,</span> <span class="n">desired_response_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test the &#39;GET /cars/all&#39; endpoint to retrieve all cars.</span>
+
+<span class="sd">    :param client: The test client for making HTTP requests.</span>
+<span class="sd">    :param car_data: The JSON data of the car to be posted.</span>
+<span class="sd">    :param desired_response_data: The expected JSON data of the desired car response.</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/cars/all&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;all_cars&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">desired_response_data</span><span class="p">]}</span></div>
+
+
+
+<div class="viewcode-block" id="test_update_car_by_id">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_update_car_by_id">[docs]</a>
+<span class="k">def</span> <span class="nf">test_update_car_by_id</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">,</span> <span class="n">desired_response_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test the update_car_by_id method.</span>
+
+<span class="sd">    :param client: The client object used for making HTTP requests.</span>
+<span class="sd">    :type client: object</span>
+<span class="sd">    :param car_data: The data of the car to be updated.</span>
+<span class="sd">    :type car_data: dict</span>
+<span class="sd">    :param desired_response_data: The desired response data that after creation of entity contains id.</span>
+<span class="sd">    :type desired_response_data: dict</span>
+<span class="sd">    :return: None</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/car&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/car/1&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;registration&quot;</span><span class="p">:</span> <span class="s2">&quot;XXXXXXX&quot;</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="o">**</span><span class="n">desired_response_data</span><span class="p">,</span> <span class="s1">&#39;registration&#39;</span><span class="p">:</span> <span class="s1">&#39;XXXXXXX&#39;</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="test_update_car_by_id_with_bad_data">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_update_car_by_id_with_bad_data">[docs]</a>
+<span class="k">def</span> <span class="nf">test_update_car_by_id_with_bad_data</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">,</span> <span class="n">desired_response_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test the update_car_by_id_with_bad_data method.</span>
+
+<span class="sd">    :param client: The client used to send the request.</span>
+<span class="sd">    :param&quot;&quot;&quot;</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/car/1&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/car/1&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="n">car_data</span><span class="p">,</span> <span class="s1">&#39;registration&#39;</span><span class="p">:</span> <span class="s1">&#39;DDD0000 0&#39;</span><span class="p">})</span> <span class="c1"># regex won&#39;t match</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid request&quot;</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_update_car_by_id_when_not_exists">
+<a class="viewcode-back" href="../../tests.html#tests.test_car_routes.test_update_car_by_id_when_not_exists">[docs]</a>
+<span class="k">def</span> <span class="nf">test_update_car_by_id_when_not_exists</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">car_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    :param client: The client used to send the HTTP request.</span>
+<span class="sd">    :type client: object</span>
+
+<span class="sd">    :param car_data: The data of the car to be updated.</span>
+<span class="sd">    :type car_data: dict</span>
+
+<span class="sd">    :return: None</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/car/1&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">car_data</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car does not exist&quot;</span><span class="p">}</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Damian Smolczynski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

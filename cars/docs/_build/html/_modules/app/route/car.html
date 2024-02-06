@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.route.car &mdash; cars-service 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            cars-service
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">cars</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">cars-service</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">app.route.car</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for app.route.car</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">reqparse</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Response</span><span class="p">,</span> <span class="n">make_response</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.exc</span> <span class="kn">import</span> <span class="n">IntegrityError</span>
+
+<span class="kn">from</span> <span class="nn">app.db.configuration</span> <span class="kn">import</span> <span class="n">sa</span>
+<span class="kn">from</span> <span class="nn">app.db.model</span> <span class="kn">import</span> <span class="n">CarModel</span>
+<span class="kn">from</span> <span class="nn">app.validator.car</span> <span class="kn">import</span> <span class="n">car_schema</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="AllCarsResource">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.AllCarsResource">[docs]</a>
+<span class="k">class</span> <span class="nc">AllCarsResource</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing the resource for retrieving all cars.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        - get: Retrieves all cars and returns a JSON response.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AllCarsResource.get">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.AllCarsResource.get">[docs]</a>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get all cars.</span>
+
+<span class="sd">        :return: Response object with a JSON containing all cars.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cars</span> <span class="o">=</span> <span class="n">CarModel</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">({</span><span class="s1">&#39;all_cars&#39;</span><span class="p">:</span> <span class="n">cars</span><span class="p">})</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;application/json&#39;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+</div>
+
+
+<div class="viewcode-block" id="CarResource">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.CarResource">[docs]</a>
+<span class="k">class</span> <span class="nc">CarResource</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    The `CarResource` class is a subclass of `Resource` and provides HTTP methods for interacting with car resources.</span>
+
+<span class="sd">    It includes the following methods:</span>
+
+<span class="sd">    - `get(self, car_id)`: Returns the details of a car with the given `car_id`. If the car exists, it returns the car details as a dictionary with a 200 status code. If the car does not</span>
+<span class="sd">    * exist, it returns a 404 status code with a message indicating that the car does not exist.</span>
+
+<span class="sd">    - `delete(self, car_id)`: Deletes the car with the given `car_id`. If the car exists, it deletes the car and returns a 200 status code with a message indicating that the car has been</span>
+<span class="sd">    * deleted. If the car does not exist, it returns a 404 status code with a message indicating that the car was not found.</span>
+
+<span class="sd">    - `patch(self, car_id)`: Updates the details of a car with the given `car_id` using the data provided in the request. First, it validates the request data using the `car_schema`. If</span>
+<span class="sd">    * the validation succeeds, it retrieves the car with the given `car_id`, updates the car details with the request data, and returns the updated car details as a dictionary with a 200</span>
+<span class="sd">    * status code. If the car does not exist, it returns a message indicating that the car does not exist.</span>
+
+<span class="sd">    - The `patch()` method can raise a `ValueError` or `TypeError` if the request data is invalid. In this case, it returns a 400 status code with a message indicating that the request is</span>
+<span class="sd">    * invalid.</span>
+
+<span class="sd">    Note: This class assumes that you have a `CarModel` class and a `car_schema` for validating car data.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CarResource.get">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.CarResource.get">[docs]</a>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">car_id</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a car by its ID.</span>
+
+<span class="sd">        :param car_id: The ID of the car to retrieve.</span>
+<span class="sd">        :return: A tuple consisting of the car dictionary and HTTP status code.</span>
+<span class="sd">                 If the car is found, the car dictionary will be returned with a status code of 200 (OK).</span>
+<span class="sd">                 If the car is not found, a dictionary with an error message will be returned with a status code of 404 (Not Found).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">car</span> <span class="o">=</span> <span class="n">CarModel</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">car_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">car</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">car</span><span class="o">.</span><span class="n">as_dict</span><span class="p">(),</span> <span class="mi">200</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car does not exist&quot;</span><span class="p">},</span> <span class="mi">404</span></div>
+
+
+<div class="viewcode-block" id="CarResource.delete">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.CarResource.delete">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">car_id</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete a car by its ID.</span>
+
+<span class="sd">        :param car_id: The ID of the car to be deleted.</span>
+<span class="sd">        :return: A dictionary containing the message of the result and the HTTP status code.</span>
+<span class="sd">        :rtype: Response</span>
+<span class="sd">        :raises: None</span>
+
+<span class="sd">        Example when one entry with id 1 is in the database:</span>
+<span class="sd">            &gt;&gt;&gt; delete(1)</span>
+<span class="sd">            ({&#39;message&#39;: &#39;Car has been deleted&#39;}, 200)</span>
+<span class="sd">            &gt;&gt;&gt; delete(10)</span>
+<span class="sd">            ({&#39;message&#39;: &#39;Car not found&#39;}, 404)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">car_to_delete</span> <span class="o">=</span> <span class="n">CarModel</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">car_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">car_to_delete</span><span class="p">:</span>
+            <span class="n">car_to_delete</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car has been deleted&quot;</span><span class="p">},</span> <span class="mi">200</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car not found&quot;</span><span class="p">},</span> <span class="mi">404</span></div>
+
+
+<div class="viewcode-block" id="CarResource.patch">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.CarResource.patch">[docs]</a>
+    <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">car_id</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates a car with the provided car_id.</span>
+
+<span class="sd">        :param car_id: ID of the car to be updated.</span>
+<span class="sd">        :return: Response containing the updated car details or an error message.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+            <span class="n">car_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">car</span> <span class="o">=</span> <span class="n">CarModel</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">car_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">car</span><span class="p">:</span>
+                <span class="n">car</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">car</span><span class="o">.</span><span class="n">as_dict</span><span class="p">(),</span> <span class="mi">200</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Car does not exist&quot;</span><span class="p">},</span> <span class="mi">404</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="ow">or</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid request&quot;</span><span class="p">},</span> <span class="mi">400</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="CarResourceAdd">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.CarResourceAdd">[docs]</a>
+<span class="k">class</span> <span class="nc">CarResourceAdd</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :class:`CarResourceAdd` is a class that represents a resource for adding a car to a system.</span>
+
+<span class="sd">    The class inherits from the `Resource` class.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parser (RequestParser): An instance of the `RequestParser` class used for parsing and validating request data.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        post(): Processes a POST request to add a car to the system.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Registration of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Vin of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Make of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Model of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;first_registration_date&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;First Registration Date of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;production_year&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Production year of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;mileage&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Mileage of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;fuel_consumption&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fuel consumption of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;fuel_type_id&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fuel type id of the car is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;vehicle_status_id&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Vehicle status id of the car is required&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CarResourceAdd.post">
+<a class="viewcode-back" href="../../../app.route.html#app.route.car.CarResourceAdd.post">[docs]</a>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Post method to create a new car record.</span>
+
+<span class="sd">        :return: The response containing the car ID if successful, or an error message with the appropriate HTTP status code.</span>
+<span class="sd">        :rtype: Response</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># NOTE Gdy parametr nie zostanie podany, to zwracane jest 400, gdy zaś typ jest inny np. int zamiast str, to leci dalej</span>
+        <span class="c1"># NOTE Musi istnieć mechanizm, który parsuje do typu który oczekuje parser</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">car_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">car</span> <span class="o">=</span> <span class="n">CarModel</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">car</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">car</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+        <span class="k">except</span> <span class="n">IntegrityError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">orig</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]},</span> <span class="mi">403</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="ow">or</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid request&quot;</span><span class="p">},</span> <span class="mi">400</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Damian Smolczynski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

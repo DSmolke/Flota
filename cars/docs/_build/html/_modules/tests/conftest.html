@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.conftest &mdash; cars-service 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            cars-service
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">cars</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cars-service</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tests.conftest</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.conftest</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask.testing</span> <span class="kn">import</span> <span class="n">FlaskClient</span><span class="p">,</span> <span class="n">FlaskCliRunner</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Api</span>
+
+<span class="kn">from</span> <span class="nn">app.env_variables</span> <span class="kn">import</span> <span class="n">TEST_SQLALCHEMY_DATABASE_URI</span><span class="p">,</span> <span class="n">SQLALCHEMY_DATABASE_URI</span>
+<span class="kn">from</span> <span class="nn">app.db.configuration</span> <span class="kn">import</span> <span class="n">sa</span>
+<span class="kn">from</span> <span class="nn">app.db.model</span> <span class="kn">import</span> <span class="n">FuelTypeModel</span><span class="p">,</span> <span class="n">VehicleStatusModel</span>
+<span class="kn">from</span> <span class="nn">app.route.car</span> <span class="kn">import</span> <span class="n">AllCarsResource</span><span class="p">,</span> <span class="n">CarResource</span><span class="p">,</span> <span class="n">CarResourceAdd</span>
+
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="app">
+<a class="viewcode-back" href="../../tests.html#tests.conftest.app">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">app</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method initializes and returns an instance of the Flask application with the necessary configurations and resources.</span>
+
+<span class="sd">    :return: Flask application object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;TESTING&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;SQLALCHEMY_DATABASE_URI&#39;</span><span class="p">:</span> <span class="n">TEST_SQLALCHEMY_DATABASE_URI</span><span class="p">,</span>
+            <span class="s1">&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+
+        <span class="n">sa</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+        <span class="n">sa</span><span class="o">.</span><span class="n">drop_all</span><span class="p">()</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
+
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add_all</span><span class="p">([</span>
+            <span class="n">FuelTypeModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;petrol&#39;</span><span class="p">,</span> <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.89</span><span class="p">),</span>
+            <span class="n">FuelTypeModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;diesel&#39;</span><span class="p">,</span> <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.95</span><span class="p">),</span>
+            <span class="n">FuelTypeModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;electric&#39;</span><span class="p">,</span> <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">),</span>
+            <span class="n">VehicleStatusModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ready&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Ready to use&#39;</span><span class="p">),</span>
+            <span class="n">VehicleStatusModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;repair&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Waiting for repairs to be done&#39;</span><span class="p">),</span>
+            <span class="n">VehicleStatusModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;not_legal&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Waiting for mot or insurance&#39;</span><span class="p">)</span>
+        <span class="p">])</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="n">api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+        <span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">AllCarsResource</span><span class="p">,</span> <span class="s1">&#39;/cars/all&#39;</span><span class="p">)</span>
+        <span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">CarResource</span><span class="p">,</span> <span class="s1">&#39;/car/&lt;int:car_id&gt;&#39;</span><span class="p">)</span>
+        <span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">CarResourceAdd</span><span class="p">,</span> <span class="s1">&#39;/car&#39;</span><span class="p">)</span>
+
+    <span class="k">yield</span> <span class="n">app</span></div>
+
+
+<div class="viewcode-block" id="client">
+<a class="viewcode-back" href="../../tests.html#tests.conftest.client">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlaskClient</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param app: The Flask application instance.</span>
+<span class="sd">    :return: A FlaskClient instance.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">client</span><span class="p">:</span> <span class="n">FlaskClient</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">test_client</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">client</span></div>
+
+
+
+<div class="viewcode-block" id="sqlalchemy_database_uri">
+<a class="viewcode-back" href="../../tests.html#tests.conftest.sqlalchemy_database_uri">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">sqlalchemy_database_uri</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the SQLAlchemy database URI.</span>
+
+<span class="sd">    :return: The SQLAlchemy database URI as a string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SQLALCHEMY_DATABASE_URI</span></div>
+
+
+<div class="viewcode-block" id="car_data">
+<a class="viewcode-back" href="../../tests.html#tests.conftest.car_data">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">car_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get car data.</span>
+
+<span class="sd">    :return: A dictionary containing the car data with the following keys:</span>
+<span class="sd">        - &quot;registration&quot;: The registration number of the car.</span>
+<span class="sd">        - &quot;vin&quot;: The Vehicle Identification Number (VIN) of the car.</span>
+<span class="sd">        - &quot;make&quot;: The make of the car.</span>
+<span class="sd">        - &quot;model&quot;: The model of the car.</span>
+<span class="sd">        - &quot;first_registration_date&quot;: The date when the car was first registered.</span>
+<span class="sd">        - &quot;production_year&quot;: The year when the car was produced.</span>
+<span class="sd">        - &quot;mileage&quot;: The mileage of the car.</span>
+<span class="sd">        - &quot;fuel_consumption&quot;: The fuel consumption of the car.</span>
+<span class="sd">        - &quot;fuel_type_id&quot;: The ID of the fuel type of the car.</span>
+<span class="sd">        - &quot;vehicle_status_id&quot;: The ID of the vehicle status of the car.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;registration&quot;</span><span class="p">:</span> <span class="s2">&quot;DPL96RR&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vin&quot;</span><span class="p">:</span> <span class="s2">&quot;12AASL45J01234122&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;make&quot;</span><span class="p">:</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;SERIES 3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;first_registration_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-01-04&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;production_year&quot;</span><span class="p">:</span> <span class="s2">&quot;2023&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mileage&quot;</span><span class="p">:</span> <span class="s2">&quot;15000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fuel_consumption&quot;</span><span class="p">:</span> <span class="s1">&#39;6.99&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;fuel_type_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;vehicle_status_id&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="desired_response_data">
+<a class="viewcode-back" href="../../tests.html#tests.conftest.desired_response_data">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">desired_response_data</span><span class="p">(</span><span class="n">car_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates the desired response data by adding an &quot;id&quot; key to the car_data dictionary.</span>
+
+<span class="sd">    :param car_data: A dictionary containing car data.</span>
+<span class="sd">    :return: The modified car_data dictionary with an additional &quot;id&quot; key.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">car_data</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Damian Smolczynski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
