@@ -15,9 +15,9 @@ from app.route.car import cars_blueprint
 
 app = Flask(__name__)
 
+
 def main():
     with app.app_context():
-
         # KONFIGURACJA BAZY
         app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
         app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -32,7 +32,7 @@ def main():
         # EMAIL CONFIGURATION
         # ----------------------------------------------------------------------
         app.config.update(MAIL_SETTINGS)
-        MailSender.init(app) # MailSender tworzy sobie intancję mail -> Mail(app)
+        MailSender.init(app)  # MailSender tworzy sobie intancję mail -> Mail(app)
 
         # ----------------------------------------------------------------------
         # SECURITY CONFIGURATION
@@ -48,7 +48,25 @@ def main():
         # CORS CONFIGURATION
         # ----------------------------------------------------------------------
         CORS(app, resources={
-            '/*': CORS_CONFIG
+            '/*': {
+                'allow_headers': [
+                    'accept',
+                    'accept-encoding',
+                    'authorization',
+                    'content-type'
+                ],
+                'methods': [
+                    'delete',
+                    'get',
+                    'post',
+                    'patch',
+                    'put',
+                    'options'
+                ],
+                'origins': [
+                    'http://localhost:3000'
+                ]
+            }
         })
 
         app.register_blueprint(cars_blueprint)

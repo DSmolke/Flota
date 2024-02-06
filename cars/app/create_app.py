@@ -11,6 +11,7 @@ from app.route.car import AllCarsResource, CarResource, CarResourceAdd
 
 app = Flask(__name__)
 
+
 def main():
     """
     The main() method is the entry point of the application. It sets up the database configuration, API configuration, and CORS configuration. It also returns the Flask application object
@@ -26,7 +27,6 @@ def main():
     ```
     """
     with app.app_context():
-
         # DATABASE CONFIGURATION
         app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
         app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -47,7 +47,26 @@ def main():
         # CORS CONFIGURATION
         # ----------------------------------------------------------------------
         CORS(app, resources={
-            '/*': CORS_CONFIG
+            '/*': {
+                'allow_headers': [
+                    'accept',
+                    'accept-encoding',
+                    'authorization',
+                    'content-type'
+                ],
+                'methods': [
+                    'delete',
+                    'get',
+                    'post',
+                    'patch',
+                    'put',
+                    'options'
+                ],
+                'origins': [
+                    'http://localhost:8000',
+                    'http://localhost:3000',
+                ]
+            }
         })
 
     return app

@@ -49,6 +49,9 @@ At first, my convention was to use a regular alembic to create a global migratio
 ### Tests
 I conducted them following the guidelines from the documentation - https://flask.palletsprojects.com/en/3.0.x/testing/. For their execution, I used a separate test database. During their execution, I made an effort to clear table rows before each test iteration.
 
+### Cors
+At the beginning of development I decided to store CORS policies for any URL with suffix '/*' in separate package inside of 'configuration.py' module. Although this implementation gives more separation between domains of configuration my call is to store it directly in app context, because it gives more compact code. Also storing policies in .env file looks like a 'overkill' to me.
+
 <br />
 <br />
 

@@ -49,6 +49,10 @@ Na początku moją konwencją było użycie zwykłego alembica do stworzenia glo
 ### Testy
 Przeprowadziłem je z wytycznych dokumentacji - https://flask.palletsprojects.com/en/3.0.x/testing/ Do ich przeprowadzania użyłem osobnej bazy testowej. W ich egzekucji starałem się czyścić wiersze tabel przed każdą iteracją testu.
 
+### Cors
+
+Na początku procesu rozwoju mikro serwisów postanowiłem przechowywać zasady CORS dla dowolnego adresu URL z sufiksem '/*' w osobnym pakiecie wewnątrz modułu 'configuration.py'. Chociaż ta implementacja zapewnia większe rozdzielenie między domenami konfiguracji, moim zdaniem lepiej je przechowywać bezpośrednio w kontekście aplikacji, ponieważ prowadzi to do bardziej zwartego kodu. Ponadto przechowywanie zasad w pliku .env wydaje mi się nadmiarowe.
+
 <br />
 <br />
 
