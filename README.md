@@ -52,6 +52,14 @@ I conducted them following the guidelines from the documentation - https://flask
 ### Cors
 At the beginning of development I decided to store CORS policies for any URL with suffix '/*' in separate package inside of 'configuration.py' module. Although this implementation gives more separation between domains of configuration my call is to store it directly in app context, because it gives more compact code. Also storing policies in .env file looks like a 'overkill' to me.
 
+### Coverage and Sphinx Documentation
+Once coverage and sphinx docs are generated, they need to be deployed on separate as GitHub pages, and then removed from main repository to avoid messing up with 'Languages' highlights of repository. Here is example before and after:
+
+![image](https://github.com/DSmolke/Flota/assets/106284705/ba27090d-a671-401e-a48b-3114fdd5ccec)
+![image](https://github.com/DSmolke/Flota/assets/106284705/d2216eb2-1373-453c-bad9-c9e4e867758d)
+
+
+
 <br />
 <br />
 
