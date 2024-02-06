@@ -53,6 +53,11 @@ Przeprowadziłem je z wytycznych dokumentacji - https://flask.palletsprojects.co
 
 Na początku procesu rozwoju mikro serwisów postanowiłem przechowywać zasady CORS dla dowolnego adresu URL z sufiksem '/*' w osobnym pakiecie wewnątrz modułu 'configuration.py'. Chociaż ta implementacja zapewnia większe rozdzielenie między domenami konfiguracji, moim zdaniem lepiej je przechowywać bezpośrednio w kontekście aplikacji, ponieważ prowadzi to do bardziej zwartego kodu. Ponadto przechowywanie zasad w pliku .env wydaje mi się nadmiarowe.
 
+### Coverage i Dokumentacja Sphinx
+Po wygenerowaniu raportu pokrycia kodu (coverage) oraz dokumentacji Sphinx, należy je umieścić na osobnych stronach GitHub Pages, a następnie usunąć je z głównego repozytorium, aby uniknąć zakłóceń w wyświetlaniu sekcji użytych języków w repozytorium.
+
+![image](https://github.com/DSmolke/Flota/assets/106284705/ba27090d-a671-401e-a48b-3114fdd5ccec)
+![image](https://github.com/DSmolke/Flota/assets/106284705/d2216eb2-1373-453c-bad9-c9e4e867758d)
 <br />
 <br />
 
