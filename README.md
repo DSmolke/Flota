@@ -18,7 +18,7 @@
 [DEV Stories](#dev-stories) | [Microservices](#microservices) | [How to use](#how-to-use) | [Features](#features) | [How to install & test](#how-to-install--test)
 
 
-Read in different languages: ![pl](https://github.com/DSmolke/Flota/assets/106284705/36aee71f-8df5-49f0-ab91-71f29fd341d8)[PL](./README.md) ![gb](https://github.com/DSmolke/Flota/assets/106284705/fab2d773-77a0-40b2-bc84-c5af473f26af)[EN](./README.md)
+Read in different languages: ![pl](https://github.com/DSmolke/Flota/assets/106284705/36aee71f-8df5-49f0-ab91-71f29fd341d8)[PL](./README.polish.md) ![gb](https://github.com/DSmolke/Flota/assets/106284705/fab2d773-77a0-40b2-bc84-c5af473f26af)[EN](./README.md)
 
 
 <br />
