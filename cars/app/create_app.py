@@ -5,7 +5,6 @@ from flask_migrate import Migrate
 
 from app.env_variables import SQLALCHEMY_DATABASE_URI
 from app.db.configuration import sa
-from app.cors.configuration import CORS_CONFIG
 
 from app.route.car import AllCarsResource, CarResource, CarResourceAdd
 

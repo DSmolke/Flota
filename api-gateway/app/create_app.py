@@ -2,7 +2,6 @@ from flask import Flask
 from flask_restful import Api
 from flask_migrate import Migrate
 
-from app.cors.configuration import CORS_CONFIG
 from app.db.configuration import sa
 from app.env_variables import SQLALCHEMY_DATABASE_URI
 from app.route.user import UserResource, UserActivationResource
