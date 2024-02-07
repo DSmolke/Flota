@@ -58,6 +58,12 @@ Once coverage and sphinx docs are generated, they need to be deployed on separat
 ![image](https://github.com/DSmolke/Flota/assets/106284705/ba27090d-a671-401e-a48b-3114fdd5ccec)
 ![image](https://github.com/DSmolke/Flota/assets/106284705/d2216eb2-1373-453c-bad9-c9e4e867758d)
 
+### pipenv vs poetry
+At this particular project I decided to use pipenv over poetry as it seems to be more stable and up-to-date tool for virtual environments. 
+
+### Loading env variables redundancy
+By reviewing code we can see that when it comes to loading environment variables I use python-dotenv package. Because every env file has '.env' filename, theoretically there is no need for using dotenv as pipenv loads those variables by default whenever their path is parallel with Pipfile. But dotenv will definitely will pay off then different naming conventions will see a daylight. Like 'test.env', 'serviceX.env', so I prefer to use this external package. 
+
 
 
 <br />

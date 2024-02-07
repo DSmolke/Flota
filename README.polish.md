@@ -58,6 +58,13 @@ Po wygenerowaniu raportu pokrycia kodu (coverage) oraz dokumentacji Sphinx, nale
 
 ![image](https://github.com/DSmolke/Flota/assets/106284705/ba27090d-a671-401e-a48b-3114fdd5ccec)
 ![image](https://github.com/DSmolke/Flota/assets/106284705/d2216eb2-1373-453c-bad9-c9e4e867758d)
+
+### pipenv vs poetry
+W tym konkretnym projekcie postanowiłem użyć pipenv zamiast poetry, ponieważ wydaje się bardziej stabilnym i szybciej aktualizowanym narzędziem do zarządzania środowiskami wirtualnymi.
+
+### Redundancja w ładowaniu zmiennych środowiskowych
+Przy przeglądaniu kodu można zauważyć, że do wczytywania zmiennych środowiskowych używam paczki python-dotenv. Ponieważ każdy plik env ma nazwę '.env', teoretycznie nie ma potrzeby korzystania z dotenv, ponieważ pipenv automatycznie wczytuje te zmienne, gdy ich ścieżka jest równoległa z plikiem Pipfile. Jednak dotenv z pewnością się opłaci, gdy zostaną wprowadzone różne konwencje nazewnicze, takie jak 'test.env', 'serviceX.env', dlatego wolę używać tej zewnętrznej paczki.
+
 <br />
 <br />
 
