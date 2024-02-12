@@ -1,0 +1,2 @@
+[tool.coverage.html]
+directory = "coverage_report"
