@@ -140,7 +140,7 @@ def test_update_car_by_id(client, car_data, desired_response_data):
     assert response.status_code == 200
     assert response.json == {**desired_response_data, 'registration': 'XXXXXXX'}
 
-def test_update_car_by_id_with_bad_data(client, car_data, desired_response_data):
+def test_update_car_by_id_with_bad_data(client, car_data):
     """
     Test the update_car_by_id_with_bad_data method.
 
