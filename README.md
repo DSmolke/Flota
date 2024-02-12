@@ -64,6 +64,7 @@ At this particular project I decided to use pipenv over poetry as it seems to be
 ### Loading env variables redundancy
 By reviewing code we can see that when it comes to loading environment variables I use python-dotenv package. Because every env file has '.env' filename, theoretically there is no need for using dotenv as pipenv loads those variables by default whenever their path is parallel with Pipfile. But dotenv will definitely will pay off then different naming conventions will see a daylight. Like 'test.env', 'serviceX.env', so I prefer to use this external package. 
 
+### TODO Flask Migrate Can't detect MotModel because it wasn't used anywhere
 
 
 <br />
@@ -73,10 +74,11 @@ By reviewing code we can see that when it comes to loading environment variables
 <hr>
 
 
-| microservice | wiki                                                         | coverage |
-|--------------|--------------------------------------------------------------|----------|
-| api-gateway  |                                                              |          |
+| microservice | wiki                                                                     | coverage                                                         |
+|--------------|--------------------------------------------------------------------------|------------------------------------------------------------------|
+| api-gateway  |                                                                          |                                                                  |
 | cars         | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/) |
+| mots         | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/) |
 
 
 <br/>
@@ -93,13 +95,13 @@ By reviewing code we can see that when it comes to loading environment variables
 ## Features
 <hr>
 
-| Functionality                | State | Demo     |
-|------------------------------|-------|----------|
-| CRUD Operations on Car       | ✅     | [video]() |
-| Authorization                | ✅     | [video]() |
-| Registration                 | ✅     | [video]() |
-| Authentication via Email     | 🛠️   | [video]() |
-| CRUD Operations on Insurance | 🔜    | [video]() |
+| Functionality            | State | Demo      |
+|--------------------------|-------|-----------|
+| CRUD Operations on Car   | ✅     | [video]() |
+| Authorization            | ✅     | [video]() |
+| Registration             | ✅     | [video]() |
+| Authentication via Email | 🛠️   | [video]() |
+| CRUD Operations on Mot   | 🔜    | [video]() |
 
 ✅ done
 🛠️ in progress

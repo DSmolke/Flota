@@ -76,6 +76,7 @@ Przy przeglądaniu kodu można zauważyć, że do wczytywania zmiennych środowi
 |-------------|--------------------------------------------------------------------------|------------------------------------------------------------------|
 | api-gateway |                                                                          |                                                                  |
 | cars        | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/) |
+| mots        | [link]()                                                                 | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/) |
 
 
 <br/>
@@ -92,13 +93,13 @@ Przy przeglądaniu kodu można zauważyć, że do wczytywania zmiennych środowi
 ## Funkcjonalności
 <hr>
 
-| Funkcjonalność               | Stan | Demonstracja |
-|------------------------------|------|--------------|
-| Operacje CRUD na encji Car   | ✅    | [wideo]()    |
-| Autoryzacja                  | ✅    | [wideo]()    |
-| Rejestracja                  | ✅    | [wideo]()    |
-| Autentykacja poprzez email   | 🛠️  | [wideo]()    |
-| Operacje CRUD na encji Insurance | 🔜   | [wideo]()    |
+| Funkcjonalność                                | Stan | Demonstracja |
+|-----------------------------------------------|------|--------------|
+| Operacje CRUD na encji Car                    | ✅    | [wideo]()    |
+| Autoryzacja                                   | ✅    | [wideo]()    |
+| Rejestracja                                   | ✅    | [wideo]()    |
+| Autentykacja poprzez email                    | 🛠️  | [wideo]()    |
+| Operacje CRUD na encji Mot (Przegląd pojazdu_ | 🔜   | [wideo]()    |
 
 ✅ zrobione
 🛠️ w trakcie

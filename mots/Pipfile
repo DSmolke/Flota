@@ -12,9 +12,11 @@ flask-sqlalchemy = "*"
 mysqlclient = "*"
 flask-cors = "*"
 pytest = "*"
-coverage = {extras = ["toml"], version = "*"}
+coverage = "*"
 flask-migrate = "*"
 schemadict = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 
 [dev-packages]
 
