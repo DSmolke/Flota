@@ -41,8 +41,8 @@ class MotModel(sa.Model):
         return {
             'id': self.id,
             'legal_identifier': self.legal_identifier,
-            'start_date': self.start_date,
-            'end_date': self.end_date,
+            'start_date': self.start_date.isoformat(),
+            'end_date': self.end_date.isoformat(),
             'car_registration_number': self.car_registration_number,
             'img_url': self.img_url,
             'active': self.active
@@ -89,12 +89,15 @@ class MotModel(sa.Model):
             }
             update(data)
         """
-        self.legal_identifier = data.get('legal_identifier', self.legal_identifier),
-        self.start_date = data.get('start_date', self.start_date),
-        self.end_date = data.get('end_date', self.end_date),
-        self.car_registration_number = data.get('car_registration_number', self.car_registration_number),
-        self.img_url = data.get('img_url', self.img_url),
+        self.legal_identifier = data.get('legal_identifier', self.legal_identifier)
+        self.start_date = data.get('start_date', self.start_date)
+        self.end_date = data.get('end_date', self.end_date)
+        self.car_registration_number = data.get('car_registration_number', self.car_registration_number)
+        self.img_url = data.get('img_url', self.img_url)
         self.active = data.get('active', self.active)
+
+        sa.session.add(self)
+        sa.session.commit()
 
     @classmethod
     def get_by_id(cls, mot_id: int) -> Self:
@@ -104,7 +107,6 @@ class MotModel(sa.Model):
         """
         return sa.session.get(cls, {"id": mot_id})
 
-
     @classmethod
     def get_all(cls) -> list[Self]:
         """
@@ -112,4 +114,4 @@ class MotModel(sa.Model):
 
         :return: A list of objects of the class.
         """
-        return [car.as_dict() for car in sa.session.query(cls).all()]
+        return [mot.as_dict() for mot in sa.session.query(cls).all()]
