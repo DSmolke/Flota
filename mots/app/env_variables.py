@@ -1,6 +1,6 @@
-from dotenv import load_dotenv
 from os import getenv
 from pathlib import Path
+from dotenv import load_dotenv
 
 
 ENV_FILENAME = '.env'
