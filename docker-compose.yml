@@ -20,19 +20,19 @@ services:
       - '3307:3307'
     expose:
       - 3307
+
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     networks:
       - flota-network
 
-  # ===================================================================================
-  # API GATEWAY TEST DATABASE
-  # ===================================================================================
+#  # ===================================================================================
+#  # API GATEWAY TEST DATABASE
+#  # ===================================================================================
   mysql_test_api_gateway:
     image: mysql:latest
     volumes:
       - mysql_test_api_gateway:/var/lib/mysql
-
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -44,14 +44,15 @@ services:
       - '3308:3308'
     expose:
       - 3308
+
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     networks:
       - flota-network
 
-  # ===================================================================================
-  # CARS MAIN DATABASE
-  # ===================================================================================
+#  # ===================================================================================
+#  # CARS MAIN DATABASE
+#  # ===================================================================================
   mysql_cars:
     image: mysql:latest
     volumes:
@@ -67,14 +68,15 @@ services:
       - '3309:3309'
     expose:
       - 3309
+
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     networks:
       - flota-network
 
-  # ===================================================================================
-  # CARS TEST DATABASE
-  # ===================================================================================
+#  # ===================================================================================
+#  # CARS TEST DATABASE
+#  # ===================================================================================
   mysql_test_cars:
     image: mysql:latest
     volumes:
@@ -91,18 +93,19 @@ services:
       - '3310:3310'
     expose:
       - 3310
+
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     networks:
       - flota-network
 
-  # ===================================================================================
-  # MOTS MAIN DATABASE
-  # ===================================================================================
+#  # ===================================================================================
+#  # MOTS MAIN DATABASE
+#  # ===================================================================================
   mysql_mots:
     image: mysql:latest
     volumes:
-      - mysql_cars:/var/lib/mysql
+      - mysql_mots:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -114,18 +117,19 @@ services:
       - '3311:3311'
     expose:
       - 3311
+
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     networks:
       - flota-network
 
-  # ===================================================================================
-  # MOTS TEST DATABASE
-  # ===================================================================================
+#  # ===================================================================================
+#  # MOTS TEST DATABASE
+#  # ===================================================================================
   mysql_test_mots:
     image: mysql:latest
     volumes:
-      - mysql_test_cars:/var/lib/mysql
+      - mysql_test_mots:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -137,14 +141,15 @@ services:
       - '3312:3312'
     expose:
       - 3312
+
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     networks:
       - flota-network
 
-  # ===================================================================================
-  # CARS SERVICE
-  # ===================================================================================
+#  # ===================================================================================
+#  # CARS SERVICE
+#  # ===================================================================================
   cars:
     build:
       context: ./cars
@@ -166,9 +171,9 @@ services:
         aliases:
           - cars-service
 
-  # ===================================================================================
-  # MOTS SERVICE
-  # ===================================================================================
+#  # ===================================================================================
+#  # MOTS SERVICE
+#  # ===================================================================================
   mots:
     build:
       context: ./mots
@@ -189,6 +194,24 @@ services:
       flota-network:
         aliases:
           - mots-service
+  # ===================================================================================
+  # AWS-RESOURCES MICROSERVICE
+  # ===================================================================================
+  aws-resources:
+    build:
+      context: ./aws-resources
+      dockerfile: Dockerfile
+
+    command: gunicorn --bind 0.0.0.0:8003 --workers 6 'app.create_app:main()' --reload
+    volumes:
+      - ./aws-resources:/webapp
+
+    ports:
+      - "8003:8003"
+    networks:
+      flota-network:
+        aliases:
+          - aws-resources-service
 
   api-gateway:
     build:
@@ -210,7 +233,7 @@ services:
       flota-network:
         aliases:
           - api-gateway-service
-
+#
   nginx:
     image: nginx:latest
     volumes:
