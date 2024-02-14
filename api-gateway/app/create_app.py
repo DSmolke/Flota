@@ -11,7 +11,7 @@ from app.security.configuration import configure_security
 from app.email.configuration import MAIL_SETTINGS, MailSender
 
 from app.route.car import cars_blueprint
-
+from app.route.mot import mots_blueprint
 app = Flask(__name__)
 
 
@@ -69,6 +69,7 @@ def main():
         })
 
         app.register_blueprint(cars_blueprint)
+        app.register_blueprint(mots_blueprint)
 
         @app.route('/')
         def index():
