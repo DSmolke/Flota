@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>test package &mdash; Insuraces Microservice 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="app.validator package" href="app.validator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Insuraces Microservice
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">webapp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">app package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">test package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test.conftest">test.conftest module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.app"><code class="docutils literal notranslate"><span class="pre">app()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.client"><code class="docutils literal notranslate"><span class="pre">client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.insurance_data"><code class="docutils literal notranslate"><span class="pre">insurance_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.pytest_sessionfinish"><code class="docutils literal notranslate"><span class="pre">pytest_sessionfinish()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.sqlalchemy_database_uri"><code class="docutils literal notranslate"><span class="pre">sqlalchemy_database_uri()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test.test_create_app">test.test_create_app module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_create_app.test_create_app"><code class="docutils literal notranslate"><span class="pre">test_create_app()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test.test_insurance_routes">test.test_insurance_routes module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_crate_insurance_with_invalid_data"><code class="docutils literal notranslate"><span class="pre">test_crate_insurance_with_invalid_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_create_insurance_with_duplicated_entry"><code class="docutils literal notranslate"><span class="pre">test_create_insurance_with_duplicated_entry()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_create_insurance_with_valid_data"><code class="docutils literal notranslate"><span class="pre">test_create_insurance_with_valid_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_delete_insurance_by_id"><code class="docutils literal notranslate"><span class="pre">test_delete_insurance_by_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_delete_insurance_with_invalid_id"><code class="docutils literal notranslate"><span class="pre">test_delete_insurance_with_invalid_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_get_all"><code class="docutils literal notranslate"><span class="pre">test_get_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_get_one_by_id"><code class="docutils literal notranslate"><span class="pre">test_get_one_by_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_get_one_by_id_that_not_exist"><code class="docutils literal notranslate"><span class="pre">test_get_one_by_id_that_not_exist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_update_insurance_by_id"><code class="docutils literal notranslate"><span class="pre">test_update_insurance_by_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_update_insurance_by_id_when_not_exists"><code class="docutils literal notranslate"><span class="pre">test_update_insurance_by_id_when_not_exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_insurance_routes.test_update_insurance_by_id_with_bad_data"><code class="docutils literal notranslate"><span class="pre">test_update_insurance_by_id_with_bad_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Insuraces Microservice</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">webapp</a></li>
+      <li class="breadcrumb-item active">test package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="test-package">
+<h1>test package<a class="headerlink" href="#test-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-test.conftest">
+<span id="test-conftest-module"></span><h2>test.conftest module<a class="headerlink" href="#module-test.conftest" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.app">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">app</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.app" title="Link to this definition"></a></dt>
+<dd><p>Create and configure the Flask application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The Test Flask application instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.client">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FlaskClient</span></span></span><a class="reference internal" href="_modules/test/conftest.html#client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.client" title="Link to this definition"></a></dt>
+<dd><dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FlaskClient</span></span></span><a class="reference internal" href="_modules/test/conftest.html#client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>This method creates a Flask test client for the given Flask app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>app</strong> (<em>flask.Flask</em>) – The Flask app object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Flask test client.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>flask.testing.FlaskClient</p>
+</dd>
+</dl>
+<p>Example usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
+<span class="n">test_client</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.insurance_data">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">insurance_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#insurance_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.insurance_data" title="Link to this definition"></a></dt>
+<dd><p>This method returns a dictionary representing insurance data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the following keys:
+- ‘legal_identifier’: A string representing the legal identifier for the insurance.
+- ‘start_date’: A string representing the start date of the insurance.
+- ‘end_date’: A string representing the end date of the insurance.
+- ‘car_registration_number’: A string representing the car registration number associated with the insurance.
+- ‘img_url’: A string representing the URL of an image related to the insurance.
+- ‘active’: A boolean indicating whether the insurance is active or not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.pytest_sessionfinish">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">pytest_sessionfinish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exitstatus</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#pytest_sessionfinish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.pytest_sessionfinish" title="Link to this definition"></a></dt>
+<dd><p>Called after whole test run finished, right before
+returning the exit status to the system.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.sqlalchemy_database_uri">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">sqlalchemy_database_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#sqlalchemy_database_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.sqlalchemy_database_uri" title="Link to this definition"></a></dt>
+<dd><p>Returns the SQLAlchemy database URI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The SQLAlchemy database URI as a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-test.test_create_app">
+<span id="test-test-create-app-module"></span><h2>test.test_create_app module<a class="headerlink" href="#module-test.test_create_app" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_create_app.test_create_app">
+<span class="sig-prename descclassname"><span class="pre">test.test_create_app.</span></span><span class="sig-name descname"><span class="pre">test_create_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqlalchemy_database_uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="reference internal" href="_modules/test/test_create_app.html#test_create_app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_create_app.test_create_app" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sqlalchemy_database_uri</strong> – The SQLAlchemy database URI to use for creating the test Flask application.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The test Flask application object.</p>
+</dd>
+</dl>
+<p>This method is used to test the <cite>create_app</cite> function by asserting various conditions on the test Flask application object. It creates a test Flask application using the <cite>main</cite> function
+* and performs the following assertions:
+1. Asserts that the test Flask application object is not None.
+2. Asserts that the test Flask application object is an instance of the Flask class.
+3. Asserts that the SQLAlchemy database URI configuration property of the test Flask application matches the provided <cite>sqlalchemy_database_uri</cite> parameter.
+4. Asserts that the SQLALCHEMY_TRACK_MODIFICATIONS configuration property of the test Flask application is set to False.</p>
+<p>Note: This method does not return anything, as the purpose is to perform the assertions and verify the behavior of the <cite>create_app</cite> function.</p>
+</dd></dl>
+
+</section>
+<section id="module-test.test_insurance_routes">
+<span id="test-test-insurance-routes-module"></span><h2>test.test_insurance_routes module<a class="headerlink" href="#module-test.test_insurance_routes" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_crate_insurance_with_invalid_data">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_crate_insurance_with_invalid_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_crate_insurance_with_invalid_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_crate_insurance_with_invalid_data" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client object to send the HTTP request.</p></li>
+<li><p><strong>insurance_data</strong> – The dictionary containing the insurance data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_create_insurance_with_duplicated_entry">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_create_insurance_with_duplicated_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_create_insurance_with_duplicated_entry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_create_insurance_with_duplicated_entry" title="Link to this definition"></a></dt>
+<dd><p>Test case to verify that creating an insurance with a duplicated entry returns a 403 error
+and the expected error message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client to make requests to the API</p></li>
+<li><p><strong>insurance_data</strong> – The data for the insurance to be created</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_create_insurance_with_valid_data">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_create_insurance_with_valid_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_create_insurance_with_valid_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_create_insurance_with_valid_data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_delete_insurance_by_id">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_delete_insurance_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_delete_insurance_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_delete_insurance_by_id" title="Link to this definition"></a></dt>
+<dd><p>Test method for deleting insurance by id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client object for making requests to the API.</p></li>
+<li><p><strong>insurance_data</strong> – The insurance data to be added to the database.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_delete_insurance_with_invalid_id">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_delete_insurance_with_invalid_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_delete_insurance_with_invalid_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_delete_insurance_with_invalid_id" title="Link to this definition"></a></dt>
+<dd><p>Delete insurance with invalid id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – The test client provided by the test framework.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_get_all">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_get_all" title="Link to this definition"></a></dt>
+<dd><p>API test to verify the functionality of retrieving all insurances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client object for making HTTP requests.</p></li>
+<li><p><strong>insurance_data</strong> – The insurance data to be posted for testing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – If the response status code is not 200 or the response body does not match the expected JSON.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_get_one_by_id">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_get_one_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_get_one_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_get_one_by_id" title="Link to this definition"></a></dt>
+<dd><p>Test the ‘get_one_by_id’ method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>[</em><em>type</em><em>]</em>) – The client to make requests.</p></li>
+<li><p><strong>insurance_data</strong> (<em>[</em><em>type</em><em>]</em>) – The data of the insurance to be added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AssertionError</strong> – When the response JSON does not match the expected result.</p></li>
+<li><p><strong>AssertionError</strong> – When the response status code is not 200.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_get_one_by_id_that_not_exist">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_get_one_by_id_that_not_exist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_get_one_by_id_that_not_exist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_get_one_by_id_that_not_exist" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – The client object used to send HTTP requests.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This method tests the behavior of the server when requesting information about a non-existent insurance by its ID. It uses the provided client object to send a GET request to the ‘/
+<a href="#id1"><span class="problematic" id="id2">*</span></a>insurances/1’ endpoint. The expected behavior is that the server should respond with a 404 status code and a JSON object containing the message “Insurance does not exist”. The method
+* includes assertions to verify that the status code and the JSON response match the expected values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_update_insurance_by_id">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_update_insurance_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_update_insurance_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_update_insurance_by_id" title="Link to this definition"></a></dt>
+<dd><p>Update insurance by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Client</em>) – The client object used for making HTTP requests.</p></li>
+<li><p><strong>insurance_data</strong> (<em>dict</em>) – The updated insurance data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AssertionError</strong> – If the response status code is not 200.</p></li>
+<li><p><strong>AssertionError</strong> – If the response JSON does not match the expected value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_update_insurance_by_id_when_not_exists">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_update_insurance_by_id_when_not_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_update_insurance_by_id_when_not_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_update_insurance_by_id_when_not_exists" title="Link to this definition"></a></dt>
+<dd><p>Test method to update insurance by ID when it does not exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>object</em>) – The test client.</p></li>
+<li><p><strong>insurance_data</strong> (<em>dict</em>) – The insurance data to be updated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_insurance_routes.test_update_insurance_by_id_with_bad_data">
+<span class="sig-prename descclassname"><span class="pre">test.test_insurance_routes.</span></span><span class="sig-name descname"><span class="pre">test_update_insurance_by_id_with_bad_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insurance_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/test_insurance_routes.html#test_update_insurance_by_id_with_bad_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_insurance_routes.test_update_insurance_by_id_with_bad_data" title="Link to this definition"></a></dt>
+<dd><p>Update insurance data with bad data for a specific insurance ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – A client object used for making HTTP requests.</p></li>
+<li><p><strong>insurance_data</strong> – The updated insurance data to be used for the update request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<dl>
+<dt>Example usage:</dt><dd><p>client = create_client()
+insurance_data = {</p>
+<blockquote>
+<div><p>“car_brand”: “Toyota”,
+“car_registration_number”: “ABC1234”,
+“insurance_type”: “Comprehensive”</p>
+</div></blockquote>
+<p>}
+test_update_insurance_by_id_with_bad_data(client, insurance_data)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-test">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-test" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app.validator.html" class="btn btn-neutral float-left" title="app.validator package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DSmolke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

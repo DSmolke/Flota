@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.route.insurance &mdash; Insuraces Microservice 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Insuraces Microservice
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">webapp</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Insuraces Microservice</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">app.route.insurance</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for app.route.insurance</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">make_response</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">reqparse</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.exc</span> <span class="kn">import</span> <span class="n">IntegrityError</span>
+
+
+<span class="kn">from</span> <span class="nn">app.db.configuration</span> <span class="kn">import</span> <span class="n">sa</span>
+<span class="kn">from</span> <span class="nn">app.db.model</span> <span class="kn">import</span> <span class="n">InsuranceModel</span>
+<span class="kn">from</span> <span class="nn">app.validator.insurance</span> <span class="kn">import</span> <span class="n">insurance_schema</span>
+
+
+<div class="viewcode-block" id="AllInsurancesResource">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.AllInsurancesResource">[docs]</a>
+<span class="k">class</span> <span class="nc">AllInsurancesResource</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class AllInsurancesResource</span>
+
+<span class="sd">    This class is a resource that handles the GET request for retrieving all insurances.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        - get: Retrieves all insurances.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AllInsurancesResource.get">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.AllInsurancesResource.get">[docs]</a>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all insurances.</span>
+
+<span class="sd">        :return: A response containing a JSON object with all insurance records.</span>
+<span class="sd">        :rtype: Response</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">insurances</span> <span class="o">=</span> <span class="n">InsuranceModel</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">({</span><span class="s1">&#39;all_insurances&#39;</span><span class="p">:</span> <span class="n">insurances</span><span class="p">})</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;application/json&#39;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="InsurancesResource">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.InsurancesResource">[docs]</a>
+<span class="k">class</span> <span class="nc">InsurancesResource</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    InsurancesResource(Resource)</span>
+<span class="sd">    --------------------------</span>
+
+<span class="sd">    This class represents a resource for managing insurance objects.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    get(self, insurance_id: int) -&gt; Response:</span>
+<span class="sd">        This method handles the GET request for retrieving an insurance object by its ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - insurance_id (int): The ID of the insurance object to retrieve.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - Response: The response containing the insurance object as a dictionary and the status code 200 if the insurance exists, or a response with the message &quot;Insurance does not exist</span>
+<span class="sd">    *&quot; and the status code 404 if the insurance does not exist.</span>
+
+<span class="sd">    delete(self, insurance_id: int) -&gt; Response:</span>
+<span class="sd">        This method handles the DELETE request for deleting an insurance object by its ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - insurance_id (int): The ID of the insurance object to delete.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - Response: The response with the message &quot;Insurance has been deleted&quot; and the status code 200 if the insurance is successfully deleted, or a response with the message &quot;Insurance</span>
+<span class="sd">    * not found&quot; and the status code 404 if the insurance is not found.</span>
+
+<span class="sd">    patch(self, insurance_id: int) -&gt; Response:</span>
+<span class="sd">        This method handles the PATCH request for updating an insurance object by its ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - insurance_id (int): The ID of the insurance object to update.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - Response: The response containing the updated insurance object as a dictionary and the status code 200 if the insurance exists and the request is valid, or a response with the</span>
+<span class="sd">    * message &quot;Insurance does not exist&quot; and the status code 404 if the insurance does not exist, or a response with the message &quot;Invalid request&quot; and the status code 400 if the request</span>
+<span class="sd">    * is invalid.</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="InsurancesResource.get">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.InsurancesResource.get">[docs]</a>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">insurance_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param insurance_id: The ID of the insurance to retrieve.</span>
+<span class="sd">        :return: A Response object containing the insurance information if found, or a JSON object with an error message if the insurance does not exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">insurance</span> <span class="o">=</span> <span class="n">InsuranceModel</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">insurance_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">insurance</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">insurance</span><span class="o">.</span><span class="n">as_dict</span><span class="p">(),</span> <span class="mi">200</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Insurance does not exist&quot;</span><span class="p">},</span> <span class="mi">404</span></div>
+
+
+<div class="viewcode-block" id="InsurancesResource.delete">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.InsurancesResource.delete">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">insurance_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete insurance by ID.</span>
+
+<span class="sd">        :param insurance_id: ID of the insurance to be deleted.</span>
+<span class="sd">        :type insurance_id: int</span>
+<span class="sd">        :return: Response with a message indicating the status of the delete operation.</span>
+<span class="sd">        :rtype: Response</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">insurance_to_delete</span> <span class="o">=</span> <span class="n">InsuranceModel</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">insurance_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">insurance_to_delete</span><span class="p">:</span>
+            <span class="n">insurance_to_delete</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Insurance has been deleted&quot;</span><span class="p">},</span> <span class="mi">200</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Insurance not found&quot;</span><span class="p">},</span> <span class="mi">404</span></div>
+
+
+<div class="viewcode-block" id="InsurancesResource.patch">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.InsurancesResource.patch">[docs]</a>
+    <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">insurance_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param insurance_id: The ID of the insurance to be patched.</span>
+<span class="sd">        :return: The patched insurance as a dictionary, with HTTP status code 200 if successful.</span>
+<span class="sd">                 If the insurance does not exist, returns a dictionary with a &quot;message&quot; key and HTTP status code 404.</span>
+<span class="sd">                 If the request is invalid, returns a dictionary with a &quot;message&quot; key and HTTP status code 400.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+            <span class="n">insurance_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">insurance</span> <span class="o">=</span> <span class="n">InsuranceModel</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">insurance_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">insurance</span><span class="p">:</span>
+                <span class="n">insurance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">insurance</span><span class="o">.</span><span class="n">as_dict</span><span class="p">(),</span> <span class="mi">200</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Insurance does not exist&quot;</span><span class="p">},</span> <span class="mi">404</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="ow">or</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid request&quot;</span><span class="p">},</span> <span class="mi">400</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="InsuranceResourceAdd">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.InsuranceResourceAdd">[docs]</a>
+<span class="k">class</span> <span class="nc">InsuranceResourceAdd</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Resource class to handle adding insurance data.</span>
+
+<span class="sd">    :ivar parser: RequestParser object to parse and validate request arguments.</span>
+<span class="sd">    :vartype parser: RequestParser</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;legal_identifier&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Legal identifier of insurance is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Start date of insurance is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;end_date&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;End date of insurance is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;car_registration_number&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Car registration number of insurance is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;img_url&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Image url of the insurance is required&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Active flag of insurance is required&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="InsuranceResourceAdd.post">
+<a class="viewcode-back" href="../../../app.route.html#app.route.insurance.InsuranceResourceAdd.post">[docs]</a>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process a POST request to create a new insurance entry.</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">            - If the request is valid and the insurance entry is successfully created:</span>
+<span class="sd">                - The ID of the created insurance entry.</span>
+<span class="sd">                - Status code 201 indicating successful creation.</span>
+<span class="sd">                - Content-Type header set to application/json.</span>
+<span class="sd">            - If the request fails due to integrity error (duplicate entry):</span>
+<span class="sd">                - A JSON object with a message describing the error.</span>
+<span class="sd">                - Status code 403 indicating forbidden access.</span>
+<span class="sd">            - If the request fails due to invalid data or incorrect data types:</span>
+<span class="sd">                - A JSON object with a message indicating an invalid request.</span>
+<span class="sd">                - Status code 400 indicating bad request.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">insurance_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">insurance</span> <span class="o">=</span> <span class="n">InsuranceModel</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">insurance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">insurance</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+        <span class="k">except</span> <span class="n">IntegrityError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">orig</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]},</span> <span class="mi">403</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="ow">or</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid request&quot;</span><span class="p">},</span> <span class="mi">400</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DSmolke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -147,6 +147,55 @@ services:
     networks:
       - flota-network
 
+
+#  # ===================================================================================
+#  # INSURANCES MAIN DATABASE
+#  # ===================================================================================
+  mysql_insurances:
+    image: mysql:latest
+    volumes:
+      - mysql_insurances:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_1
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user1234
+      MYSQL_TCP_PORT: 3313
+    ports:
+      - '3313:3313'
+    expose:
+      - 3313
+
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+    networks:
+      - flota-network
+
+#  # ===================================================================================
+#  # INSURANCES TEST DATABASE
+#  # ===================================================================================
+  mysql_test_insurances:
+    image: mysql:latest
+    volumes:
+      - mysql_test_insurances:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user1234
+      MYSQL_TCP_PORT: 3314
+    ports:
+      - '3314:3314'
+    expose:
+      - 3314
+
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+    networks:
+      - flota-network
+
 #  # ===================================================================================
 #  # CARS SERVICE
 #  # ===================================================================================
@@ -213,6 +262,31 @@ services:
         aliases:
           - aws-resources-service
 
+  # ===================================================================================
+  # INSURANCES MICROSERVICE
+  # ===================================================================================
+  insurances:
+    build:
+      context: ./insurances
+      dockerfile: Dockerfile
+
+    command: gunicorn --bind 0.0.0.0:8004 --workers 6 'app.create_app:main()' --reload
+    volumes:
+      - ./insurances:/webapp
+
+    depends_on:
+      mysql_insurances:
+        condition: service_healthy
+      mysql_test_insurances:
+        condition: service_healthy
+
+    ports:
+      - "8004:8004"
+    networks:
+      flota-network:
+        aliases:
+          - insurances-service
+
   api-gateway:
     build:
       context: ./api-gateway
@@ -233,7 +307,7 @@ services:
       flota-network:
         aliases:
           - api-gateway-service
-#
+
   nginx:
     image: nginx:latest
     volumes:
@@ -253,5 +327,7 @@ volumes:
   mysql_test_cars:
   mysql_mots:
   mysql_test_mots:
+  mysql_insurances:
+  mysql_test_insurances:
 networks:
   flota-network:
