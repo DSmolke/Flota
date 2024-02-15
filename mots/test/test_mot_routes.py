@@ -13,7 +13,7 @@ def test_create_mot_with_valid_data(client, mot_data):
     """
     response = client.post('/mots', json=mot_data)
     assert response.status_code == 201
-    assert response.json == 1
+    assert response.json == {**mot_data, 'id': 1}
 
 def test_create_mot_with_duplicated_entry(client, mot_data):
     """

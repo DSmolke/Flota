@@ -12,7 +12,7 @@ def test_create_car_with_valid_data(client, car_data):
     """
     response = client.post("/car", json=car_data)
     assert response.status_code == 201
-    assert response.json == 1
+    assert response.json == {**car_data, 'id': 1}
 
 
 def test_create_car_with_duplicated_entry(client, car_data):

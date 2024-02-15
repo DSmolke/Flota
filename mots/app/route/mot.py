@@ -121,7 +121,7 @@ class MotResourceAdd(Resource):
             mot_schema.validate(data)
             mot = MotModel(**data)
             mot.save()
-            return mot.id, 201, {'Content-Type': "application/json"}
+            return mot.as_dict(), 201, {'Content-Type': "application/json"}
         except IntegrityError as e:
             sa.session.rollback()
             return {"message": e.orig.args[1]}, 403

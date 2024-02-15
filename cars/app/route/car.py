@@ -146,9 +146,10 @@ class CarResourceAdd(Resource):
             car_schema.validate(data)
             car = CarModel(**data)
             car.save()
-            return car.id, 201, {'Content-Type': "application/json"}
+            return car.as_dict(), 201, {'Content-Type': "application/json"}
         except IntegrityError as e:
             sa.session.rollback()
             return {"message": e.orig.args[1]}, 403
-        except ValueError or TypeError:
+        except ValueError or TypeError as e:
+            logging.info(e)
             return {"message": "Invalid request"}, 400
