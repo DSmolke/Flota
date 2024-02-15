@@ -64,7 +64,7 @@ At this particular project I decided to use pipenv over poetry as it seems to be
 ### Loading env variables redundancy
 By reviewing code we can see that when it comes to loading environment variables I use python-dotenv package. Because every env file has '.env' filename, theoretically there is no need for using dotenv as pipenv loads those variables by default whenever their path is parallel with Pipfile. But dotenv will definitely will pay off then different naming conventions will see a daylight. Like 'test.env', 'serviceX.env', so I prefer to use this external package. 
 
-### TODO Flask Migrate Can't detect MotModel because it wasn't used anywhere
+
 
 
 <br />
