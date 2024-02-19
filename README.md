@@ -97,21 +97,20 @@ By reviewing code we can see that when it comes to loading environment variables
 ## Features
 <hr>
 
-| Functionality                                             | State | Demo      |
-|-----------------------------------------------------------|-------|-----------|
-| CRUD Operations on Car                                    | ✅     | [video]() |
-| Authorization                                             | ✅     | [video]() |
-| Registration                                              | ✅     | [video]() |
-| Authentication via Email                                  | ✅     | [video]() |
-| CRUD Operations on Mot                                    | ✅     | [video]() |
-| CRUD Operations on Insurance                              | ✅     | [video]() |
-| Storing static resources in Amazon S3                     | ✅     | [video]() |
-| Managing cars repairs                                     | 🛠️   | [video]() |
-| Loading Cars, Mots, Insurances data from existing sources | 🔜    | [video]() |
+| Functionality                                             | State | Demo |
+|-----------------------------------------------------------|-------|------|
+| CRUD Operations on Car                                    | ✅     |      |
+| Authorization                                             | ✅     |      |
+| Registration                                              | ✅     |      |
+| Authentication via Email                                  | ✅     |      |
+| CRUD Operations on Mot                                    | ✅     |      |
+| CRUD Operations on Insurance                              | ✅     |      |
+| Storing static resources in Amazon S3                     | ✅     |      |
+| Managing cars repairs                                     | 🛠️   |      |
+| Loading Cars, Mots, Insurances data from existing sources | 🔜    |      |
 ✅ done
 🛠️ in progress
 🔜 planned
-
 
 <br/>
 <br/>

@@ -76,7 +76,9 @@ Przy przeglądaniu kodu można zauważyć, że do wczytywania zmiennych środowi
 |-------------|--------------------------------------------------------------------------|------------------------------------------------------------------|
 | api-gateway |                                                                          |                                                                  |
 | cars        | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/) |
-| mots        | [link]()                                                                 | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/) |
+| mots          | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/)       |
+| insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)       | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
+| aws-resources |                                                                          |                                                                        |
 
 
 <br/>
@@ -93,14 +95,17 @@ Przy przeglądaniu kodu można zauważyć, że do wczytywania zmiennych środowi
 ## Funkcjonalności
 <hr>
 
-| Funkcjonalność                                | Stan | Demonstracja |
-|-----------------------------------------------|------|--------------|
-| Operacje CRUD na encji Car                    | ✅    | [wideo]()    |
-| Autoryzacja                                   | ✅    | [wideo]()    |
-| Rejestracja                                   | ✅    | [wideo]()    |
-| Autentykacja poprzez email                    | 🛠️  | [wideo]()    |
-| Operacje CRUD na encji Mot (Przegląd pojazdu_ | 🔜   | [wideo]()    |
-
+| Funkcjonalność                                             | Stan | Demonstracja |
+|------------------------------------------------------------|------|--------------|
+| Operacje CRUD na encji Car                                 | ✅    |              |
+| Autoryzacja                                                | ✅    |              |
+| Rejestracja                                                | ✅    |              |
+| Autentykacja poprzez email                                 | 🛠️  |              |
+| Operacje CRUD na encji Mot (Przegląd pojazdu)              | 🔜   |              |
+| Operacje CRUD na encji Insurance                           | ✅    |              |
+| Przechowywanie zasobów statycznych w Amazon S3             | ✅    |              |
+| Zarządzenie naprawami samochodów                           | 🛠️  |              |
+| Ładowanie Car, Mot, Insurance z istniejących źródeł danych | 🔜   |              |
 ✅ zrobione
 🛠️ w trakcie
 🔜 zaplanowane
