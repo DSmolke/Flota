@@ -108,6 +108,7 @@ By reviewing code we can see that when it comes to loading environment variables
 | Storing static resources in Amazon S3                     | ✅     |      |
 | Managing cars repairs                                     | 🛠️   |      |
 | Loading Cars, Mots, Insurances data from existing sources | 🔜    |      |
+
 ✅ done
 🛠️ in progress
 🔜 planned
