@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+gunicorn = "*"
+python-dotenv = "*"
+flask-restful = "*"
+flask-sqlalchemy = "*"
+mysqlclient = "*"
+flask-cors = "*"
+pytest = "*"
+flask-migrate = "*"
+schemadict = "*"
+coverage = {extras = ["toml"], version = "*"}
+sphinx = "*"
+sphinx-rtd-theme = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
