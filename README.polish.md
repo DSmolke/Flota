@@ -65,6 +65,10 @@ W tym konkretnym projekcie postanowiłem użyć pipenv zamiast poetry, ponieważ
 ### Redundancja w ładowaniu zmiennych środowiskowych
 Przy przeglądaniu kodu można zauważyć, że do wczytywania zmiennych środowiskowych używam paczki python-dotenv. Ponieważ każdy plik env ma nazwę '.env', teoretycznie nie ma potrzeby korzystania z dotenv, ponieważ pipenv automatycznie wczytuje te zmienne, gdy ich ścieżka jest równoległa z plikiem Pipfile. Jednak dotenv z pewnością się opłaci, gdy zostaną wprowadzone różne konwencje nazewnicze, takie jak 'test.env', 'serviceX.env', dlatego wolę używać tej zewnętrznej paczki.
 
+### Nadanie routom API większej ortogonalności
+Tworząc routy dla mikroserwisu „repairs”, zacząłem zastanawiać się, czy jestem w stanie wprowadzić taką implementację podłączania zasobów do API, która będzie jak najbardziej ortogonalna względem kontekstu aplikacji, w którym następuje konfiguracja. Ortogonalność to abstrakcja stanu, w którym zmiany w jednym elemencie systemu nie wpływają na jego inne elementy. Podejście, które dotychczas miałem wypracowane, było proste. Stworzenie zasobu, zaimportowanie go do przestrzeni konfiguracji, a na koniec dodanie go do istniejącego API. Często jednak musiałem powtarzać tę procedurę dla kilku zasobów. Zgodnie z zasadą ortogonalności, zmiana w jednym module nie powinna wymuszać zmian poza nim. Dlatego stworzyłem „RepairEndpointsMapper”, w którym na bieżąco definiuję zasoby, jakie chcę podpiąć do API. Samo API zostaje przekazane przy wywołaniu klasy. W ten sposób procedura zamienia się w: Przypisz zasób wraz ze ścieżką do mappera, zaimportuj mappera, przekaż API i wywołaj metodę „init_endpoints”. Teraz, jeśli chcemy dodać zasób, po prostu dodajemy go do mappera.
+
+
 <br />
 <br />
 
