@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.db.model &mdash; Repairs microservice 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Repairs microservice
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">repairs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Repairs microservice</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">app.db.model</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for app.db.model</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Self</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">app.db.configuration</span> <span class="kn">import</span> <span class="n">sa</span>
+
+
+<div class="viewcode-block" id="RepairStatus">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairStatus">[docs]</a>
+<span class="k">class</span> <span class="nc">RepairStatus</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;repair_status&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="RepairModel">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel">[docs]</a>
+<span class="k">class</span> <span class="nc">RepairModel</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Module: repair_model</span>
+
+<span class="sd">    Description:</span>
+<span class="sd">    This module contains the `RepairModel` class, which represents a repair record in a database. The class provides methods for CRUD operations on repair records.</span>
+
+<span class="sd">    Classes:</span>
+<span class="sd">    - `RepairModel`: A class representing a repair record.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">    - `as_dict()`: Converts the `RepairModel` object to a dictionary representation.</span>
+<span class="sd">    - `save()`: Saves the `RepairModel` object to the database.</span>
+<span class="sd">    - `delete()`: Deletes the `RepairModel` object from the database.</span>
+<span class="sd">    - `update(data: dict[str, Any])`: Updates the `RepairModel` object with the provided data.</span>
+<span class="sd">    - `get_by_id(repair_id: int) -&gt; RepairModel`: Retrieves a repair record by its ID.</span>
+<span class="sd">    - `get_all_by_car_id(car_id: int) -&gt; list[RepairModel]`: Retrieves all repair records associated with a specific car ID.</span>
+<span class="sd">    - `get_all() -&gt; list[RepairModel]`: Retrieves all repair records.</span>
+
+<span class="sd">    Usage:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    from repair_model import RepairModel</span>
+
+<span class="sd">    # Example usage</span>
+<span class="sd">    repair = RepairModel()</span>
+<span class="sd">    repair.car_id = 1</span>
+<span class="sd">    repair.repair_status = 2</span>
+<span class="sd">    repair.repair_description = &#39;Engine oil change&#39;</span>
+<span class="sd">    repair.start_date = &#39;2022-01-01&#39;</span>
+<span class="sd">    repair.approximate_duration = 1</span>
+<span class="sd">    repair.garage_name = &#39;Example Garage&#39;</span>
+<span class="sd">    repair.garage_phone = &#39;123-456-7890&#39;</span>
+
+<span class="sd">    repair.save()</span>
+
+<span class="sd">    repair.repair_description = &#39;Oil and filter change&#39;</span>
+<span class="sd">    repair.update({&#39;repair_status&#39;: 3})</span>
+
+<span class="sd">    repair.delete()</span>
+
+<span class="sd">    found_repair = RepairModel.get_by_id(1)</span>
+<span class="sd">    all_repairs = RepairModel.get_all()</span>
+<span class="sd">    ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;repairs&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">car_id</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">repair_status</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;repair_status.id&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">repair_description</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Date</span><span class="p">)</span>
+    <span class="n">approximate_duration</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Integer</span><span class="p">)</span>
+    <span class="n">garage_name</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">garage_phone</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RepairModel.as_dict">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel.as_dict">[docs]</a>
+    <span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the object attributes as a dictionary.</span>
+
+<span class="sd">        :return: A dictionary containing the object attributes.</span>
+<span class="sd">        :rtype: dict[str, Any]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s1">&#39;car_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">car_id</span><span class="p">,</span>
+            <span class="s1">&#39;repair_status&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repair_status</span><span class="p">,</span>
+            <span class="s1">&#39;repair_description&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">repair_description</span><span class="p">,</span>
+            <span class="s1">&#39;start_date&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+            <span class="s1">&#39;approximate_duration&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">approximate_duration</span><span class="p">,</span>
+            <span class="s1">&#39;garage_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">garage_name</span><span class="p">,</span>
+            <span class="s1">&#39;garage_phone&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">garage_phone</span>
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="RepairModel.save">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the current object to the database.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="RepairModel.delete">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel.delete">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete the current instance from the database.</span>
+
+<span class="sd">        :return: None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="RepairModel.update">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the attributes of the current object with the given data.</span>
+
+<span class="sd">        :param data: A dictionary containing the updated values for the following attributes:</span>
+<span class="sd">            - car_id (Optional): The ID of the car associated with the repair.</span>
+<span class="sd">            - repair_status (Optional): The status of the repair.</span>
+<span class="sd">            - repair_description (Optional): A description of the repair.</span>
+<span class="sd">            - start_date (Optional): The start date of the repair.</span>
+<span class="sd">            - approximate_duration (Optional): The approximate duration of the repair.</span>
+<span class="sd">            - garage_name (Optional): The name of the garage where the repair is being done.</span>
+<span class="sd">            - garage_phone (Optional): The phone number of the garage.</span>
+
+<span class="sd">        :return: None</span>
+
+<span class="sd">        Example usage:</span>
+
+<span class="sd">            data = {</span>
+<span class="sd">                &#39;car_id&#39;: 123,</span>
+<span class="sd">                &#39;repair_status&#39;: 1,</span>
+<span class="sd">                &#39;repair_description&#39;: &#39;Engine repair&#39;,</span>
+<span class="sd">                &#39;start_date&#39;: &#39;2022-01-01&#39;,</span>
+<span class="sd">                &#39;approximate_duration&#39;: 5,</span>
+<span class="sd">                &#39;garage_name&#39;: &#39;ABC Garage&#39;,</span>
+<span class="sd">                &#39;garage_phone&#39;: &#39;570688764&#39;</span>
+<span class="sd">            }</span>
+<span class="sd">            update(data)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car_id</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;car_id&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">car_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repair_status</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;repair_status&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">repair_status</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repair_description</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;repair_description&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">repair_description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">approximate_duration</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;approximate_duration&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">approximate_duration</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">garage_name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;garage_name&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">garage_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">garage_phone</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;garage_phone&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">garage_phone</span><span class="p">)</span>
+
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="RepairModel.get_by_id">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel.get_by_id">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_by_id</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">repair_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a repair object with the specified repair_id.</span>
+
+<span class="sd">        :param repair_id: The ID of the repair object to retrieve.</span>
+<span class="sd">        :type repair_id: int</span>
+<span class="sd">        :return: The repair object with the specified repair_id.</span>
+<span class="sd">        :rtype: Self</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">repair_id</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="RepairModel.get_all_by_car_id">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel.get_all_by_car_id">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_all_by_car_id</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">car_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all repairs by car ID.</span>
+
+<span class="sd">        :param car_id: The ID of the car for which repairs are retrieved.</span>
+<span class="sd">        :return: A list of repair objects associated with the specified car ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">found_repairs</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">car_id</span><span class="o">=</span><span class="n">car_id</span><span class="p">))</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">found_repairs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">repair</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">repair</span> <span class="ow">in</span> <span class="n">found_repairs</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="RepairModel.get_all">
+<a class="viewcode-back" href="../../../app.db.html#app.db.model.RepairModel.get_all">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves all instances of the class.</span>
+
+<span class="sd">        :return: A list of instances of the class.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">repair</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">repair</span> <span class="ow">in</span> <span class="n">sa</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DSmolke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

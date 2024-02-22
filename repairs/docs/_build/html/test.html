@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>test package &mdash; Repairs microservice 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="app.validator package" href="app.validator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Repairs microservice
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">repairs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">app package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">test package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test.conftest">test.conftest module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.app"><code class="docutils literal notranslate"><span class="pre">app()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.client"><code class="docutils literal notranslate"><span class="pre">client()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.desired_response_data"><code class="docutils literal notranslate"><span class="pre">desired_response_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.repair_data"><code class="docutils literal notranslate"><span class="pre">repair_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.conftest.sqlalchemy_database_uri"><code class="docutils literal notranslate"><span class="pre">sqlalchemy_database_uri()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test.test_create_app">test.test_create_app module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_create_app.test_create_app"><code class="docutils literal notranslate"><span class="pre">test_create_app()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test.test_repairs_routes">test.test_repairs_routes module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_repairs_routes.TestBusinessRepairsRoutes"><code class="docutils literal notranslate"><span class="pre">TestBusinessRepairsRoutes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_repairs_routes.TestCRUDRepairsRoutes"><code class="docutils literal notranslate"><span class="pre">TestCRUDRepairsRoutes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Repairs microservice</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">repairs</a></li>
+      <li class="breadcrumb-item active">test package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="test-package">
+<h1>test package<a class="headerlink" href="#test-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-test.conftest">
+<span id="test-conftest-module"></span><h2>test.conftest module<a class="headerlink" href="#module-test.conftest" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.app">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">app</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.app" title="Link to this definition"></a></dt>
+<dd><p>The <cite>app</cite> method is a fixture that initializes and configures a Flask application for testing purposes.</p>
+<p>The method creates a Flask app instance, sets the necessary app context, and updates the app configuration for testing. It initializes the SQLAlchemy database by dropping and creating
+* all tables and inserts some initial data into the database.</p>
+<p>Additionally, it sets up an API instance and maps the repair endpoints using the <cite>RepairEndPointsMapper</cite> class. Lastly, it registers the <cite>repairs</cite> blueprint with the app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The initialized Flask app instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.client">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FlaskClient</span></span></span><a class="reference internal" href="_modules/test/conftest.html#client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.client" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>app</strong> – Flask application instance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>FlaskClient instance for testing the application.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.desired_response_data">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">desired_response_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#desired_response_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.desired_response_data" title="Link to this definition"></a></dt>
+<dd><p>Adds an ‘id’ key to the repair data and returns the modified dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repair_data</strong> – A dictionary containing repair data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the ‘id’ key added.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.repair_data">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">repair_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#repair_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.repair_data" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary containing the repair data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary with the following keys:
+- car_id: an integer representing the car ID.
+- repair_status: an integer representing the repair status.
+- repair_description: a string describing the repair.
+- approximate_duration: an integer representing the approximate duration of the repair.
+- start_date: a string representing the start date of the repair in the format “YYYY-MM-DD”.
+- garage_name: a string representing the name of the garage.
+- garage_phone: a string representing the phone number of the garage.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test.conftest.sqlalchemy_database_uri">
+<span class="sig-prename descclassname"><span class="pre">test.conftest.</span></span><span class="sig-name descname"><span class="pre">sqlalchemy_database_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test/conftest.html#sqlalchemy_database_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.conftest.sqlalchemy_database_uri" title="Link to this definition"></a></dt>
+<dd><p>Returns the SQLAlchemy database URI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The SQLAlchemy database URI.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-test.test_create_app">
+<span id="test-test-create-app-module"></span><h2>test.test_create_app module<a class="headerlink" href="#module-test.test_create_app" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="test.test_create_app.test_create_app">
+<span class="sig-prename descclassname"><span class="pre">test.test_create_app.</span></span><span class="sig-name descname"><span class="pre">test_create_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqlalchemy_database_uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="reference internal" href="_modules/test/test_create_app.html#test_create_app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_create_app.test_create_app" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sqlalchemy_database_uri</strong> – The SQLAlchemy database URI to use for creating the test Flask application.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The test Flask application object.</p>
+</dd>
+</dl>
+<p>This method is used to test the <cite>create_app</cite> function by asserting various conditions on the test Flask application object. It creates a test Flask application using the <cite>main</cite> function
+* and performs the following assertions:
+1. Asserts that the test Flask application object is not None.
+2. Asserts that the test Flask application object is an instance of the Flask class.
+3. Asserts that the SQLAlchemy database URI configuration property of the test Flask application matches the provided <cite>sqlalchemy_database_uri</cite> parameter.
+4. Asserts that the SQLALCHEMY_TRACK_MODIFICATIONS configuration property of the test Flask application is set to False.</p>
+<p>Note: This method does not return anything, as the purpose is to perform the assertions and verify the behavior of the <cite>create_app</cite> function.</p>
+</dd></dl>
+
+</section>
+<section id="module-test.test_repairs_routes">
+<span id="test-test-repairs-routes-module"></span><h2>test.test_repairs_routes module<a class="headerlink" href="#module-test.test_repairs_routes" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestBusinessRepairsRoutes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">test.test_repairs_routes.</span></span><span class="sig-name descname"><span class="pre">TestBusinessRepairsRoutes</span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestBusinessRepairsRoutes" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestBusinessRepairsRoutes.test_add_pending_repair">
+<span class="sig-name descname"><span class="pre">test_add_pending_repair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes.test_add_pending_repair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestBusinessRepairsRoutes.test_add_pending_repair" title="Link to this definition"></a></dt>
+<dd><p>Test method to add a pending repair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client to send the request.</p></li>
+<li><p><strong>repair_data</strong> – The repair data to be added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestBusinessRepairsRoutes.test_all_repairs_by_car_id">
+<span class="sig-name descname"><span class="pre">test_all_repairs_by_car_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes.test_all_repairs_by_car_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestBusinessRepairsRoutes.test_all_repairs_by_car_id" title="Link to this definition"></a></dt>
+<dd><p>Test the endpoint to get all repairs associated with a car ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Client</em>) – The client to perform HTTP requests.</p></li>
+<li><p><strong>repair_data</strong> (<em>dict</em>) – The repair data to be used in the test.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestBusinessRepairsRoutes.test_all_repairs_by_car_id_when_no_entries">
+<span class="sig-name descname"><span class="pre">test_all_repairs_by_car_id_when_no_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes.test_all_repairs_by_car_id_when_no_entries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestBusinessRepairsRoutes.test_all_repairs_by_car_id_when_no_entries" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – The HTTP client used to make requests to the server.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This method tests the behavior of the server when attempting to retrieve all repairs for a specific car with no entries. It uses the provided HTTP client to make a GET request to the
+* “/repairs/by_car_id/1” endpoint. The method then asserts that the response status code is 404 (Not Found) and that the response JSON contains the message “No repairs for that car_id
+<a href="#id1"><span class="problematic" id="id2">*</span></a>”.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestBusinessRepairsRoutes.test_finish_repair">
+<span class="sig-name descname"><span class="pre">test_finish_repair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes.test_finish_repair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestBusinessRepairsRoutes.test_finish_repair" title="Link to this definition"></a></dt>
+<dd><p>Test the finish repair endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The test client.</p></li>
+<li><p><strong>repair_data</strong> – The data for creating a repair.</p></li>
+<li><p><strong>desired_response_data</strong> – The expected response data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestBusinessRepairsRoutes.test_finish_repair_when_repair_does_not_exist">
+<span class="sig-name descname"><span class="pre">test_finish_repair_when_repair_does_not_exist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes.test_finish_repair_when_repair_does_not_exist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestBusinessRepairsRoutes.test_finish_repair_when_repair_does_not_exist" title="Link to this definition"></a></dt>
+<dd><p>Test if finishing a repair that does not exist returns a 404 status code and the correct error message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The test client.</p></li>
+<li><p><strong>repair_data</strong> – The data for the repair.</p></li>
+<li><p><strong>desired_response_data</strong> – The desired response data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestBusinessRepairsRoutes.test_start_pending">
+<span class="sig-name descname"><span class="pre">test_start_pending</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes.test_start_pending"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestBusinessRepairsRoutes.test_start_pending" title="Link to this definition"></a></dt>
+<dd><dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">test_start_pending</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestBusinessRepairsRoutes.test_start_pending"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>This method is used to test the start_pending function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>object</em>) – The HTTP client used to make requests.</p></li>
+<li><p><strong>repair_data</strong> (<em>dict</em>) – The repair data to be used for testing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">test.test_repairs_routes.</span></span><span class="sig-name descname"><span class="pre">TestCRUDRepairsRoutes</span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes.test_create_repair_with_valid_data">
+<span class="sig-name descname"><span class="pre">test_create_repair_with_valid_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes.test_create_repair_with_valid_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes.test_create_repair_with_valid_data" title="Link to this definition"></a></dt>
+<dd><p>Method to test the create repair endpoint with valid data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client object to make the HTTP request.</p></li>
+<li><p><strong>repair_data</strong> – The data for creating a repair.</p></li>
+<li><p><strong>desired_response_data</strong> – The expected response data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes.test_delete_repair_by_id">
+<span class="sig-name descname"><span class="pre">test_delete_repair_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes.test_delete_repair_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes.test_delete_repair_by_id" title="Link to this definition"></a></dt>
+<dd><p>Deletes a repair by its ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The client used to make HTTP requests.</p></li>
+<li><p><strong>repair_data</strong> – The data of the repair to be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes.test_delete_repair_by_id_when_doesnt_exists">
+<span class="sig-name descname"><span class="pre">test_delete_repair_by_id_when_doesnt_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes.test_delete_repair_by_id_when_doesnt_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes.test_delete_repair_by_id_when_doesnt_exists" title="Link to this definition"></a></dt>
+<dd><p>Test deleting a repair by ID when it doesn’t exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – The client to perform the request.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes.test_get_all_repairs">
+<span class="sig-name descname"><span class="pre">test_get_all_repairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes.test_get_all_repairs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes.test_get_all_repairs" title="Link to this definition"></a></dt>
+<dd><p>Test to verify the functionality of getting all repairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The test client to make HTTP requests.</p></li>
+<li><p><strong>repair_data</strong> – The data for creating a repair.</p></li>
+<li><p><strong>desired_response_data</strong> – The expected response data for the created repair.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes.test_get_one_by_id">
+<span class="sig-name descname"><span class="pre">test_get_one_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes.test_get_one_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes.test_get_one_by_id" title="Link to this definition"></a></dt>
+<dd><p>Test for retrieving a repair by its ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>object</em>) – The client object to send HTTP requests.</p></li>
+<li><p><strong>repair_data</strong> (<em>dict</em>) – The repair data to be added. It should be in JSON format.</p></li>
+<li><p><strong>desired_response_data</strong> (<em>dict</em>) – The expected response data that should be returned by the API.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes.test_get_one_by_id_that_not_exist">
+<span class="sig-name descname"><span class="pre">test_get_one_by_id_that_not_exist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes.test_get_one_by_id_that_not_exist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes.test_get_one_by_id_that_not_exist" title="Link to this definition"></a></dt>
+<dd><p>Test get_one_by_id_that_not_exist method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> – The client object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_repairs_routes.TestCRUDRepairsRoutes.test_update_repair_by_id">
+<span class="sig-name descname"><span class="pre">test_update_repair_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repair_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_response_data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test/test_repairs_routes.html#TestCRUDRepairsRoutes.test_update_repair_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test.test_repairs_routes.TestCRUDRepairsRoutes.test_update_repair_by_id" title="Link to this definition"></a></dt>
+<dd><p>Sends a POST request to create a repair with the given repair data,
+then sends a PATCH request to update the repair with the given ID
+by setting the car ID to the specified value. Finally, verifies that
+the response status code is 200 and the response JSON matches the
+expected response data merged with the updated car ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – The test client to send HTTP requests.</p></li>
+<li><p><strong>repair_data</strong> – The data for creating the repair.</p></li>
+<li><p><strong>desired_response_data</strong> – The expected response data after the update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-test">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-test" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app.validator.html" class="btn btn-neutral float-left" title="app.validator package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DSmolke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
