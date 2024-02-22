@@ -93,13 +93,14 @@ Samo API zostaje przekazane przy wywołaniu klasy. W ten sposób procedura zamie
 <hr>
 
 
-| mikroserwis | wikipedia                                                                | pokrycie testami                                                 |
-|-------------|--------------------------------------------------------------------------|------------------------------------------------------------------|
-| api-gateway |                                                                          |                                                                  |
-| cars        | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/) |
-| mots          | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/)       |
-| insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)       | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
-| aws-resources |                                                                          |                                                                        |
+| mikroserwis   | wikipedia                                                                   | pokrycie testami                                                       |
+|---------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------|
+| api-gateway   |                                                                             |                                                                        |
+| cars          | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/)       |
+| mots          | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/)       |
+| insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
+| repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
+| aws-resources |                                                                             |                                                                        |
 
 
 <br/>
