@@ -66,7 +66,19 @@ By reviewing code we can see that when it comes to loading environment variables
 
 
 ### Making API Routes more orthogonal
-Creating routes for the "repairs" microservice, I began to wonder if I could introduce an implementation of connecting resources to the API that would be as orthogonal as possible to the application context in which configuration takes place. Orthogonality is the abstraction of a state in which changes in one element of the system do not affect its other elements. The approach I had developed so far was simple. Create a resource, import it into the configuration space, and finally add it to the existing API. However, I often had to repeat this procedure for several resources. According to the principle of orthogonality, a change in one module should not necessitate changes outside of it. That's why I created the "RepairEndpointsMapper", where I define the resources I want to attach to the API on the fly. The API itself is passed when the class is called. This way, the procedure transforms into: Assign the resource along with the path to the mapper, import the mapper, pass the API, and call the "init_endpoints" method. Now, if we want to add a resource, we simply add it to the mapper.
+Creating routes for the "repairs" microservice, I began to wonder if I could introduce an implementation of connecting resources to the API that would be as orthogonal as possible to the application context in which configuration takes place. Orthogonality is the abstraction of a state in which changes in one element of the system do not affect its other elements. The approach I had developed so far was simple. Create a resource, import it into the configuration space, and finally add it to the existing API.
+
+![image](https://github.com/DSmolke/Flota/assets/106284705/9c9f32f3-be72-478a-8bb5-eca8754eb38e)
+![image](https://github.com/DSmolke/Flota/assets/106284705/59d5ad04-19cd-42b5-baf7-a123e35e961d)
+
+However, I often had to repeat this procedure for several resources. According to the principle of orthogonality, a change in one module should not necessitate changes outside of it. That's why I created the "RepairEndpointsMapper", where I define the resources I want to attach to the API on the fly.
+
+![image](https://github.com/DSmolke/Flota/assets/106284705/4c8aeb7b-e023-46a2-a139-90867af3e26f)
+
+The API itself is passed when the class is called. This way, the procedure transforms into: Assign the resource along with the path to the mapper, import the mapper, pass the API, and call the "init_endpoints" method. Now, if we want to add a resource, we simply add it to the mapper.
+![image](https://github.com/DSmolke/Flota/assets/106284705/8d6e798d-91fd-4f0a-b354-592d1e5cf131)
+
+![image](https://github.com/DSmolke/Flota/assets/106284705/28ba15af-fd06-4558-9072-becd42aae2a6)
 
 
 
