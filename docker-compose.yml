@@ -360,6 +360,26 @@ services:
         aliases:
           - repairs-service
 
+#   ===================================================================================
+#   CEPIK MICROSERVICE
+#   ===================================================================================
+  cepik:
+    build:
+      context: ./cepik
+      dockerfile: Dockerfile
+
+    command: gunicorn --bind 0.0.0.0:8006 --workers 1 'app.create_app:main()' --reload
+    volumes:
+      - ./cepik:/webapp
+
+
+    ports:
+      - "8006:8006"
+    networks:
+      flota-network:
+        aliases:
+          - cepik-service
+
   api-gateway:
     build:
       context: ./api-gateway
