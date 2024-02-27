@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass
@@ -14,3 +15,10 @@ class CarDetails:
     registration: str
     vin: str
     first_registration_date: str
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "registration": self.registration,
+            "vin": self.vin,
+            "first_registration_date": self.first_registration_date
+        }

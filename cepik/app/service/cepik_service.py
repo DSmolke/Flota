@@ -23,15 +23,7 @@ class CepikSevice:
     vehicle_information = [VehicleHistoryInformation.MOT_STATUS, VehicleHistoryInformation.INSURANCE_STATUS]
     url: str = "https://historiapojazdu.gov.pl/strona-glowna/"
 
-    def get_car_report(self):
-        """
-            Method: get_car_report
-
-            This method retrieves a report for a car based on the car details and vehicle information provided.
-
-            :return: A dictionary containing the car report information.
-        """
-        report = {}
+    def _login(self) -> None:
         self.driver.get(self.url)
         registration = self.driver.find_element(by=By.ID,
                                                 value="_historiapojazduportlet_WAR_historiapojazduportlet_:rej")
@@ -47,7 +39,34 @@ class CepikSevice:
                                              value="_historiapojazduportlet_WAR_historiapojazduportlet_:btnSprawdz")
         check_btn.click()
 
+    def _stop_client(self) -> None:
+        self.driver.stop_client()
+
+    def get_car_report(self) -> dict[VehicleHistoryInformation, str]:
+        """
+            Method: get_car_report
+
+            This method retrieves a report for a car based on the car details and vehicle information provided.
+
+            :return: A dictionary containing the car report information.
+        """
+        report = {}
+
+        self._login()
+
         for information in self.vehicle_information:
             report[information] = self.driver.find_element(by=By.CSS_SELECTOR, value=information.value).text
 
+        self._stop_client()
         return report
+
+    def get_full_vehicle_history_report_url(self) -> str:
+        """
+        Get the URL for the full vehicle history report.
+
+        :return: The URL of the full vehicle history report.
+        :rtype: str
+        """
+        self._login()
+        url = self.driver.find_element(by=By.CSS_SELECTOR, value='.btn-pdf-wrapper a').get_attribute('href')
+        return url
