@@ -86,6 +86,40 @@ Samo API zostaje przekazane przy wywołaniu klasy. W ten sposób procedura zamie
 ![image](https://github.com/DSmolke/Flota/assets/106284705/1924cbef-9b0f-4e4f-9473-6b775f997143)
 
 
+### Używanie `selenium` w konsolowym środowisku kontenera dockerowego
+
+Automatyczne ustawienia przykładowego web_drivera `Chrome` w selenium wymusza na nas instalowanie silnika chromium w naszym środowisku oraz użycia urządzenia wyjścia, jakim jest nasz monitor. Jednak chcąc komercyjnie tworzyć systemy automatyzacji, musimy dostosować się do pracy w środowisku Debiana bez rozszerzeń emulujących monitor.
+
+Na przykładzie mikroserwisu `cepik`, który weryfikuje czy nasz samochód ma ważne oc i przegląd, pokażę jak skonfigurowałem obiekty `selenium`, do pracy w kontenerze dockerowym.
+
+#### 1. Instalacja google chrome w kontenerze z Debianem
+
+W `Dockerfile` naszego mikroserwisu wywołujemy komendy instalujące stabilną wersję google chrome
+
+![img_1.png](img_1.png)
+
+#### 2. Dodanie do obiektu `selenium.webdriver.chrome.options.Options` argumentów pozwalających na prawidłowe działanie drivera selenium
+
+W swoim kodzie stworzyłem `ChromeOptionsBuilder`, który zapewnia wszystkie potrzebne opcje, które musimy dodać do obiektu
+
+![img_2.png](img_2.png)
+
+`--no-sandbox` pozwala uniknąć problemu z tworzeniem sesji
+
+![img_3.png](img_3.png)
+
+`--no-screen` wyłącza potrzebę posiadania ekranu
+
+`--disable-dev-shm-usage` zmienia lokalizację cache z shm na tmp co daje większą elastyczność jeżeli wiele obiektów pracuje na shm
+
+![img_4.png](img_4.png)
+
+#### Finalne stworzenie drivera działającego poprawnie w kontenerze dockerowym, uwzględniając implementację buildera opcji wygląda następująco:
+
+![img_5.png](img_5.png)
+
+
+
 <br />
 <br />
 

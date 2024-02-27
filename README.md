@@ -76,11 +76,39 @@ However, I often had to repeat this procedure for several resources. According t
 ![image](https://github.com/DSmolke/Flota/assets/106284705/4c8aeb7b-e023-46a2-a139-90867af3e26f)
 
 The API itself is passed when the class is called. This way, the procedure transforms into: Assign the resource along with the path to the mapper, import the mapper, pass the API, and call the "init_endpoints" method. Now, if we want to add a resource, we simply add it to the mapper.
+
 ![image](https://github.com/DSmolke/Flota/assets/106284705/8d6e798d-91fd-4f0a-b354-592d1e5cf131)
 
 ![image](https://github.com/DSmolke/Flota/assets/106284705/28ba15af-fd06-4558-9072-becd42aae2a6)
 
 
+### Using `selenium` in a console environment of a Docker container
+
+Automatic settings of a sample `Chrome` web driver in selenium force us to install the Chromium engine in our environment and to use an output device, such as our monitor. However, in order to commercially create automation systems, we need to adapt to working in a Debian environment without extensions emulating a monitor.
+
+Using the example of the `cepik` microservice, which verifies whether our car has valid insurance and inspection, I will demonstrate how I configured selenium objects to work in a Docker container.
+
+#### 1. Installing Google Chrome in a container with Debian
+In the `Dockerfile` of our microservice, we invoke commands to install the stable version of Google Chrome.
+
+img_1.png
+
+#### 2. Adding arguments to the `selenium.webdriver.chrome.options.Options` object to enable the proper functioning of the Selenium driver
+In my code, I created a `ChromeOptionsBuilder`, which provides all the necessary options that we need to add to the object.
+
+img_2.png
+
+`--no-sandbox` allows avoiding issues with session creation.
+
+img_3.png
+
+`--no-screen` disables the need for a screen.
+
+`--disable-dev-shm-usage` changes the cache location from shm to tmp, providing greater flexibility if multiple objects are working on shm.
+
+img_4.png
+
+#### The final creation of a driver that works correctly in a Docker container, considering the implementation of the options builder, looks as follows:
 
 <br />
 <br />
