@@ -11,6 +11,7 @@
 
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Gunicorn](https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white)
 <br />
 <br />
 <br />
@@ -96,27 +97,31 @@ Na przykładzie mikroserwisu `cepik`, który weryfikuje czy nasz samochód ma wa
 
 W `Dockerfile` naszego mikroserwisu wywołujemy komendy instalujące stabilną wersję google chrome
 
-![img_1.png](img_1.png)
+![image](https://github.com/DSmolke/Flota/assets/106284705/7ead4a30-92a8-4457-81c4-5943a5df6475)
+
 
 #### 2. Dodanie do obiektu `selenium.webdriver.chrome.options.Options` argumentów pozwalających na prawidłowe działanie drivera selenium
 
 W swoim kodzie stworzyłem `ChromeOptionsBuilder`, który zapewnia wszystkie potrzebne opcje, które musimy dodać do obiektu
 
-![img_2.png](img_2.png)
+![image](https://github.com/DSmolke/Flota/assets/106284705/5c7470fb-17a5-49e0-b6b9-c06091329973)
+
 
 `--no-sandbox` pozwala uniknąć problemu z tworzeniem sesji
 
-![img_3.png](img_3.png)
+![image](https://github.com/DSmolke/Flota/assets/106284705/56b65f12-b1be-4a23-b5ec-99df50c89f8b)
+
 
 `--no-screen` wyłącza potrzebę posiadania ekranu
 
 `--disable-dev-shm-usage` zmienia lokalizację cache z shm na tmp co daje większą elastyczność jeżeli wiele obiektów pracuje na shm
 
-![img_4.png](img_4.png)
+![image](https://github.com/DSmolke/Flota/assets/106284705/696a7a74-2594-4837-863f-6b1a88cdf87f)
 
 #### Finalne stworzenie drivera działającego poprawnie w kontenerze dockerowym, uwzględniając implementację buildera opcji wygląda następująco:
 
-![img_5.png](img_5.png)
+![image](https://github.com/DSmolke/Flota/assets/106284705/11af75c7-2735-4f19-a94b-33104b2326d4)
+
 
 
 
