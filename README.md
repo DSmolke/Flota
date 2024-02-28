@@ -113,6 +113,47 @@ In my code, I created a `ChromeOptionsBuilder`, which provides all the necessary
 
 ![image](https://github.com/DSmolke/Flota/assets/106284705/11af75c7-2735-4f19-a94b-33104b2326d4)
 
+
+### Where to mock?
+
+
+When creating unittests, attention should be paid to where to mock functions. For example, if I'm creating a module `a.py` containing the function `get_roberts_name`, mocking should focus on that function.
+
+```python
+def get_roberts_name() -> str:
+    return 'Robert'
+```
+Now we create module `b.py`, which will be importing `get_roberts_name`
+```python
+from a import get_roberts_name
+
+def top_customer() -> str:
+    return get_roberts_name()
+```
+
+Assuming we want to test `top_customer`, but we don't want to depend on `get_roberts_name`
+
+#### THE CORRECT PLACE OF MOCKING `get_roberts_name` IS `b.py ` AND NOT `a.py`
+
+✅ diff at line 5
+```python
+import pytest
+from b import top_customer
+
+def test_top_customer(mocker) -> None:
+    mocker.patch('b.get_roberts_name', side_effect=lambda *args, **kwargs: 'Adam')
+    assert top_customer() == 'Adam' # True
+```
+
+⛔ diff at line 5
+```python
+import pytest
+from b import top_customer
+
+def test_top_customer(mocker) -> None:
+    mocker.patch('a.get_roberts_name', side_effect=lambda *args, **kwargs: 'Adam')
+    assert top_customer() == 'Adam' # False
+```
 <br />
 <br />
 
@@ -128,6 +169,7 @@ In my code, I created a `ChromeOptionsBuilder`, which provides all the necessary
 | insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
 | repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
 | aws-resources |                                                                             |                                                                        |
+| cepik         |                                                                             |                                                                        |
 
 
 <br/>
@@ -144,17 +186,19 @@ In my code, I created a `ChromeOptionsBuilder`, which provides all the necessary
 ## Features
 <hr>
 
-| Functionality                                             | State | Demo |
-|-----------------------------------------------------------|-------|------|
-| CRUD Operations on Car                                    | ✅     |      |
-| Authorization                                             | ✅     |      |
-| Registration                                              | ✅     |      |
-| Authentication via Email                                  | ✅     |      |
-| CRUD Operations on Mot                                    | ✅     |      |
-| CRUD Operations on Insurance                              | ✅     |      |
-| Storing static resources in Amazon S3                     | ✅     |      |
-| Managing cars repairs                                     | 🛠️   |      |
-| Loading Cars, Mots, Insurances data from existing sources | 🔜    |      |
+| Functionality                                                  | State | Demo |
+|----------------------------------------------------------------|-------|------|
+| CRUD Operations on Car                                         | ✅     |      |
+| Authorization                                                  | ✅     |      |
+| Registration                                                   | ✅     |      |
+| Authentication via Email                                       | ✅     |      |
+| CRUD Operations on Mot                                         | ✅     |      |
+| CRUD Operations on Insurance                                   | ✅     |      |
+| Storing static resources in Amazon S3                          | ✅     |      |
+| Managing cars repairs                                          | ✅     |      |
+| Validating MOT and Insurance using historia.pojazdu.gov        | ✅     |      |
+| Generating full car history reports using historia.pojazdu.gov | ✅     |      |
+| Loading Cars, Mots, Insurances data from existing sources      | 🔜    |      |
 
 ✅ done
 🛠️ in progress

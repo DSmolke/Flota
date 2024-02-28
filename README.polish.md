@@ -123,7 +123,43 @@ W swoim kodzie stworzyłem `ChromeOptionsBuilder`, który zapewnia wszystkie pot
 ![image](https://github.com/DSmolke/Flota/assets/106284705/11af75c7-2735-4f19-a94b-33104b2326d4)
 
 
+### Gdzie mockować?
 
+Tworząc unit testy, należy zwracać na miejsce mockowania funkcji. Przykładowo tworzę moduł `a.py`, a w nim funkcję `get_roberts_name`
+```python
+def get_roberts_name() -> str:
+    return 'Robert'
+```
+Teraz stwórzmy moduł `b.py`, który będzie importował `get_roberts_name`
+```python
+from a import get_roberts_name
+
+def top_customer() -> str:
+    return get_roberts_name()
+```
+Załóżmy, że chcemy przetestować `top_customer`, ale nie chcemy uzależniać testu od `get_roberts_name`
+
+#### PRAWIDŁOWYM MIEJCEM MOCKOWANIA `get_roberts_name` JEST `b.py ` A NIE `a.py`
+
+✅ różnica w linii 5
+```python
+import pytest
+from b import top_customer
+
+def test_top_customer(mocker) -> None:
+    mocker.patch('b.get_roberts_name', side_effect=lambda *args, **kwargs: 'Adam')
+    assert top_customer() == 'Adam' # True
+```
+
+⛔ różnica w linii 5
+```python
+import pytest
+from b import top_customer
+
+def test_top_customer(mocker) -> None:
+    mocker.patch('a.get_roberts_name', side_effect=lambda *args, **kwargs: 'Adam')
+    assert top_customer() == 'Adam' # False
+```
 
 <br />
 <br />
@@ -140,6 +176,7 @@ W swoim kodzie stworzyłem `ChromeOptionsBuilder`, który zapewnia wszystkie pot
 | insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
 | repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
 | aws-resources |                                                                             |                                                                        |
+| cepik         |                                                                             |                                                                        |
 
 
 <br/>
@@ -156,17 +193,19 @@ W swoim kodzie stworzyłem `ChromeOptionsBuilder`, który zapewnia wszystkie pot
 ## Funkcjonalności
 <hr>
 
-| Funkcjonalność                                             | Stan | Demonstracja |
-|------------------------------------------------------------|------|--------------|
-| Operacje CRUD na encji Car                                 | ✅    |              |
-| Autoryzacja                                                | ✅    |              |
-| Rejestracja                                                | ✅    |              |
-| Autentykacja poprzez email                                 | 🛠️  |              |
-| Operacje CRUD na encji Mot (Przegląd pojazdu)              | 🔜   |              |
-| Operacje CRUD na encji Insurance                           | ✅    |              |
-| Przechowywanie zasobów statycznych w Amazon S3             | ✅    |              |
-| Zarządzenie naprawami samochodów                           | 🛠️  |              |
-| Ładowanie Car, Mot, Insurance z istniejących źródeł danych | 🔜   |              |
+| Funkcjonalność                                                             | Stan | Demonstracja |
+|----------------------------------------------------------------------------|------|--------------|
+| Operacje CRUD na encji Car                                                 | ✅    |              |
+| Autoryzacja                                                                | ✅    |              |
+| Rejestracja                                                                | ✅    |              |
+| Autentykacja poprzez email                                                 | ✅    |              |
+| Operacje CRUD na encji Mot (Przegląd pojazdu)                              | ✅    |              |
+| Operacje CRUD na encji Insurance                                           | ✅    |              |
+| Przechowywanie zasobów statycznych w Amazon S3                             | ✅    |              |
+| Zarządzenie naprawami samochodów                                           | ✅    |              |
+| Walidowanie Przeglądów i OC używając historia.pojazdu.gov                  | ✅    |              |
+| Generowanie pełnych raportów histori pojazdu używając historia.pojazdu.gov | ✅    |              |
+| Ładowanie Car, Mot, Insurance z istniejących źródeł danych                 | 🔜   |              |
 ✅ zrobione
 🛠️ w trakcie
 🔜 zaplanowane
