@@ -176,7 +176,7 @@ def test_top_customer(mocker) -> None:
 | insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
 | repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
 | aws-resources |                                                                             |                                                                        |
-| cepik         | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
+| cepik         |                                                                             |                                                                        |
 
 
 <br/>
