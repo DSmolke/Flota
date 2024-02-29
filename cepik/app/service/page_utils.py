@@ -1,3 +1,4 @@
+import logging
 from enum import Enum
 
 class VehicleHistoryInformation(Enum):
@@ -19,6 +20,8 @@ def map_report_result(result: dict[VehicleHistoryInformation, str]) -> dict[Vehi
     :param result: The input dictionary containing VehicleHistoryInformation as keys and str as values.
     :return: A new dictionary with mapped keys based on the input values.
     """
+    logging.info('---------------------[Brak Mapowania]----------------------')
+    logging.info(__name__)
     mapped_result = {}
     for key, value in result.items():
         match key:

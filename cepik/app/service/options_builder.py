@@ -3,7 +3,6 @@ from typing import Self
 from selenium.webdriver.chrome.options import Options
 
 
-@dataclass(frozen=True)
 class ChromeOptionsBuilder:
     """
     A builder class for configuring ChromeOptions.
@@ -27,7 +26,9 @@ class ChromeOptionsBuilder:
             .no_dev_shared_memory()
             .build()
     """
-    options: Options = Options()
+
+    def __init__(self, options=Options) -> None:
+        self.options = options()
 
     def no_sandbox(self) -> Self:
         """

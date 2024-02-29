@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
@@ -24,6 +25,11 @@ class CepikSevice:
     url: str = "https://historiapojazdu.gov.pl/strona-glowna/"
 
     def _login(self) -> None:
+        """
+        Login to the website using the provided car details.
+
+        :return: None
+        """
         self.driver.get(self.url)
         registration = self.driver.find_element(by=By.ID,
                                                 value="_historiapojazduportlet_WAR_historiapojazduportlet_:rej")
@@ -40,6 +46,11 @@ class CepikSevice:
         check_btn.click()
 
     def _stop_client(self) -> None:
+        """
+        Stops the client.
+
+        :return: None
+        """
         self.driver.stop_client()
 
     def get_car_report(self) -> dict[VehicleHistoryInformation, str]:

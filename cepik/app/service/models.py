@@ -17,6 +17,12 @@ class CarDetails:
     first_registration_date: str
 
     def as_dict(self) -> dict[str, Any]:
+        """
+        Converts the object into a dictionary representation.
+
+        :return: A dictionary containing the object's properties.
+        :rtype: dict[str, Any]
+        """
         return {
             "registration": self.registration,
             "vin": self.vin,

@@ -22,7 +22,7 @@ class ChromeDriver:
 
         :return: A Chrome instance created with the specified Chrome options.
         """
-        return self.driver_base(self.chrome_options)
+        return self.driver_base(options=self.chrome_options)
 
 @dataclass
 class ChromeDriverLinux(ChromeDriver):
