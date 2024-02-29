@@ -8,6 +8,9 @@ selenium = "*"
 webdriver-manager = "*"
 flask = "*"
 gunicorn = "*"
+pytest = "*"
+coverage = {extras = ["toml"], version = "*"}
+pytest-mock = "*"
 
 [dev-packages]
 
