@@ -198,7 +198,9 @@ def test_top_customer(mocker) -> None:
 | Managing cars repairs                                          | ✅     |      |
 | Validating MOT and Insurance using historia.pojazdu.gov        | ✅     |      |
 | Generating full car history reports using historia.pojazdu.gov | ✅     |      |
-| Loading Cars, Mots, Insurances data from existing sources      | 🔜    |      |
+| Loading Cars, Mots, Insurances data from existing sources      | 🛠️   |      |
+| CRUD Operations on Driver                                      | 🔜    |      |
+| Notifying Driver about expiring Mot and Insurance              | 🔜    |      |
 
 ✅ done
 🛠️ in progress

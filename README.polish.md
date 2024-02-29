@@ -205,7 +205,9 @@ def test_top_customer(mocker) -> None:
 | Zarządzenie naprawami samochodów                                           | ✅    |              |
 | Walidowanie Przeglądów i OC używając historia.pojazdu.gov                  | ✅    |              |
 | Generowanie pełnych raportów histori pojazdu używając historia.pojazdu.gov | ✅    |              |
-| Ładowanie Car, Mot, Insurance z istniejących źródeł danych                 | 🔜   |              |
+| Ładowanie Car, Mot, Insurance z istniejących źródeł danych                 | 🛠️  |              |
+| Operacje CRUD na encji Driver                                              | 🔜   |              |
+| Powiadamianie kierowcy o kończącym się przeglądzie i OC                    | 🔜   |              |
 ✅ zrobione
 🛠️ w trakcie
 🔜 zaplanowane
