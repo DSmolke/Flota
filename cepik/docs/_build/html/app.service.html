@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.service package &mdash; cepik-microservice 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="test package" href="test.html" />
+    <link rel="prev" title="app.routes package" href="app.routes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            cepik-microservice
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">cepik</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="app.html">app package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="app.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="app.routes.html">app.routes package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">app.service package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.html#module-app.create_app">app.create_app module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="test.html">test package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cepik-microservice</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">cepik</a></li>
+          <li class="breadcrumb-item"><a href="app.html">app package</a></li>
+      <li class="breadcrumb-item active">app.service package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app.service.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-service-package">
+<h1>app.service package<a class="headerlink" href="#app-service-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.service.cepik_service">
+<span id="app-service-cepik-service-module"></span><h2>app.service.cepik_service module<a class="headerlink" href="#module-app.service.cepik_service" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.service.cepik_service.CepikSevice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.service.cepik_service.</span></span><span class="sig-name descname"><span class="pre">CepikSevice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WebDriver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_details</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#app.service.models.CarDetails" title="app.service.models.CarDetails"><span class="pre">CarDetails</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'https://historiapojazdu.gov.pl/strona-glowna/'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/service/cepik_service.html#CepikSevice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.cepik_service.CepikSevice" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<blockquote>
+<div><p>Class representing a Cepik service for retrieving car reports.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>driver (selenium.webdriver.Chrome): Selenium Chrome driver.
+car_details (CarDetails): Car details including registration number, VIN, and first registration date.
+vehicle_information (List[VehicleHistoryInformation], optional): List of information to retrieve from the car report. Defaults to [VehicleHistoryInformation.MOT_STATUS, Vehicle</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">*</span></a>HistoryInformation.INSURANCE_STATUS].</dt><dd><p>url (str, optional): URL of the Cepik service website. Defaults to “<a class="reference external" href="https://historiapojazdu.gov.pl/strona-glowna/">https://historiapojazdu.gov.pl/strona-glowna/</a>”.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.cepik_service.CepikSevice.car_details">
+<span class="sig-name descname"><span class="pre">car_details</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#app.service.models.CarDetails" title="app.service.models.CarDetails"><span class="pre">CarDetails</span></a></em><a class="headerlink" href="#app.service.cepik_service.CepikSevice.car_details" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.cepik_service.CepikSevice.driver">
+<span class="sig-name descname"><span class="pre">driver</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">WebDriver</span></em><a class="headerlink" href="#app.service.cepik_service.CepikSevice.driver" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.cepik_service.CepikSevice.get_car_report">
+<span class="sig-name descname"><span class="pre">get_car_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.service.page_utils.VehicleHistoryInformation" title="app.service.page_utils.VehicleHistoryInformation"><span class="pre">VehicleHistoryInformation</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/app/service/cepik_service.html#CepikSevice.get_car_report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.cepik_service.CepikSevice.get_car_report" title="Link to this definition"></a></dt>
+<dd><p>Method: get_car_report</p>
+<p>This method retrieves a report for a car based on the car details and vehicle information provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the car report information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.cepik_service.CepikSevice.get_full_vehicle_history_report_url">
+<span class="sig-name descname"><span class="pre">get_full_vehicle_history_report_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/app/service/cepik_service.html#CepikSevice.get_full_vehicle_history_report_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.cepik_service.CepikSevice.get_full_vehicle_history_report_url" title="Link to this definition"></a></dt>
+<dd><p>Get the URL for the full vehicle history report.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The URL of the full vehicle history report.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.cepik_service.CepikSevice.url">
+<span class="sig-name descname"><span class="pre">url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://historiapojazdu.gov.pl/strona-glowna/'</span></em><a class="headerlink" href="#app.service.cepik_service.CepikSevice.url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.cepik_service.CepikSevice.vehicle_information">
+<span class="sig-name descname"><span class="pre">vehicle_information</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[VehicleHistoryInformation.MOT_STATUS,</span> <span class="pre">VehicleHistoryInformation.INSURANCE_STATUS]</span></em><a class="headerlink" href="#app.service.cepik_service.CepikSevice.vehicle_information" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.service.configuration">
+<span id="app-service-configuration-module"></span><h2>app.service.configuration module<a class="headerlink" href="#module-app.service.configuration" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.service.drivers">
+<span id="app-service-drivers-module"></span><h2>app.service.drivers module<a class="headerlink" href="#module-app.service.drivers" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.service.drivers.ChromeDriver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.service.drivers.</span></span><span class="sig-name descname"><span class="pre">ChromeDriver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chrome_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/service/drivers.html#ChromeDriver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.drivers.ChromeDriver" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The ChromeDriver class is used to create a Chrome instance with specified Chrome options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chrome_options</strong> (<em>Options</em>) – The options to configure the Chrome instance.</p></li>
+<li><p><strong>driver_base</strong> (<em>WebDriver</em>) – The base WebDriver class to use. Default is Chrome.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.drivers.ChromeDriver.chrome_options">
+<span class="sig-name descname"><span class="pre">chrome_options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Options</span></em><a class="headerlink" href="#app.service.drivers.ChromeDriver.chrome_options" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.drivers.ChromeDriver.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebDriver</span></span></span><a class="reference internal" href="_modules/app/service/drivers.html#ChromeDriver.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.drivers.ChromeDriver.create" title="Link to this definition"></a></dt>
+<dd><p>Create a Chrome instance with the specified Chrome options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Chrome instance created with the specified Chrome options.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.drivers.ChromeDriver.driver_base">
+<span class="sig-name descname"><span class="pre">driver_base</span></span><a class="headerlink" href="#app.service.drivers.ChromeDriver.driver_base" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">WebDriver</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.service.drivers.ChromeDriverLinux">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.service.drivers.</span></span><span class="sig-name descname"><span class="pre">ChromeDriverLinux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chrome_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Service</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/service/drivers.html#ChromeDriverLinux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.drivers.ChromeDriverLinux" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#app.service.drivers.ChromeDriver" title="app.service.drivers.ChromeDriver"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChromeDriver</span></code></a></p>
+<section id="chromedriverlinux-class">
+<h3><a class="reference internal" href="#app.service.drivers.ChromeDriverLinux" title="app.service.drivers.ChromeDriverLinux"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChromeDriverLinux</span></code></a> class<a class="headerlink" href="#chromedriverlinux-class" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="#app.service.drivers.ChromeDriverLinux" title="app.service.drivers.ChromeDriverLinux"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChromeDriverLinux</span></code></a> class is a subclass of <a class="reference internal" href="#app.service.drivers.ChromeDriver" title="app.service.drivers.ChromeDriver"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChromeDriver</span></code></a> that is specialized for Linux operating systems. It takes an instance of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Service</span></code> class as a parameter
+* in its constructor.</p>
+<blockquote>
+<div><p>Make sure you have the necessary dependencies and setup to use the ChromeDriver on Linux before using this class.</p>
+</div></blockquote>
+<section id="methods">
+<h4>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.drivers.ChromeDriverLinux.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebDriver</span></span></span><a class="reference internal" href="_modules/app/service/drivers.html#ChromeDriverLinux.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.drivers.ChromeDriverLinux.create" title="Link to this definition"></a></dt>
+<dd><p>Creates a Chrome driver with the specified options and service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The created Chrome driver.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.drivers.ChromeDriverLinux.service">
+<span class="sig-name descname"><span class="pre">service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Service</span></em><a class="headerlink" href="#app.service.drivers.ChromeDriverLinux.service" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-app.service.models">
+<span id="app-service-models-module"></span><h2>app.service.models module<a class="headerlink" href="#module-app.service.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.service.models.CarDetails">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.service.models.</span></span><span class="sig-name descname"><span class="pre">CarDetails</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_registration_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/service/models.html#CarDetails"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.models.CarDetails" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <cite>CarDetails</cite> class represents the details of a car.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>registration (str): The registration number of the car.
+vin (str): The Vehicle Identification Number (VIN) of the car.
+first_registration_date (str): The date of the car’s first registration.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.models.CarDetails.as_dict">
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/app/service/models.html#CarDetails.as_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.models.CarDetails.as_dict" title="Link to this definition"></a></dt>
+<dd><p>Converts the object into a dictionary representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the object’s properties.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.models.CarDetails.first_registration_date">
+<span class="sig-name descname"><span class="pre">first_registration_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.service.models.CarDetails.first_registration_date" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.models.CarDetails.registration">
+<span class="sig-name descname"><span class="pre">registration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.service.models.CarDetails.registration" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.models.CarDetails.vin">
+<span class="sig-name descname"><span class="pre">vin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.service.models.CarDetails.vin" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.service.options_builder">
+<span id="app-service-options-builder-module"></span><h2>app.service.options_builder module<a class="headerlink" href="#module-app.service.options_builder" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.service.options_builder.ChromeOptionsBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.service.options_builder.</span></span><span class="sig-name descname"><span class="pre">ChromeOptionsBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options=&lt;class</span> <span class="pre">'selenium.webdriver.chrome.options.Options'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/service/options_builder.html#ChromeOptionsBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.options_builder.ChromeOptionsBuilder" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A builder class for configuring ChromeOptions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>options (Options, optional): The base options. Defaults to Options().</p>
+</dd>
+<dt>Returns:</dt><dd><p>ChromeOptionsBuilder: An instance of ChromeOptionsBuilder.</p>
+</dd>
+<dt>Methods:</dt><dd><p>no_sandbox: Adds the ‘–no-sandbox’ argument to the options.
+no_screen: Adds the ‘–headless’ argument to the options.
+no_dev_shared_memory: Adds the ‘–disable-dev-shm-usage’ argument to the options.
+build: Returns the built ChromeOptions.</p>
+</dd>
+<dt>Example:</dt><dd><dl class="simple">
+<dt>options = ChromeOptionsBuilder()</dt><dd><p>.no_sandbox()
+.no_screen()
+.no_dev_shared_memory()
+.build()</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.options_builder.ChromeOptionsBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Options</span></span></span><a class="reference internal" href="_modules/app/service/options_builder.html#ChromeOptionsBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.options_builder.ChromeOptionsBuilder.build" title="Link to this definition"></a></dt>
+<dd><p>Build the options and return them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The built options.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.options_builder.ChromeOptionsBuilder.no_dev_shared_memory">
+<span class="sig-name descname"><span class="pre">no_dev_shared_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="_modules/app/service/options_builder.html#ChromeOptionsBuilder.no_dev_shared_memory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.options_builder.ChromeOptionsBuilder.no_dev_shared_memory" title="Link to this definition"></a></dt>
+<dd><p>Disable dev-shm-usage option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.options_builder.ChromeOptionsBuilder.no_sandbox">
+<span class="sig-name descname"><span class="pre">no_sandbox</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="_modules/app/service/options_builder.html#ChromeOptionsBuilder.no_sandbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.options_builder.ChromeOptionsBuilder.no_sandbox" title="Link to this definition"></a></dt>
+<dd><p>Apply the ‘–no-sandbox’ option to the current instance of the WebDriver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current instance of the WebDriver with the ‘–no-sandbox’ option applied.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.service.options_builder.ChromeOptionsBuilder.no_screen">
+<span class="sig-name descname"><span class="pre">no_screen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="_modules/app/service/options_builder.html#ChromeOptionsBuilder.no_screen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.options_builder.ChromeOptionsBuilder.no_screen" title="Link to this definition"></a></dt>
+<dd><p>Set the headless option to True, indicating that the browser should run without a visible screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>self - The current object instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.service.page_utils">
+<span id="app-service-page-utils-module"></span><h2>app.service.page_utils module<a class="headerlink" href="#module-app.service.page_utils" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.service.page_utils.VehicleHistoryInformation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.service.page_utils.</span></span><span class="sig-name descname"><span class="pre">VehicleHistoryInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/service/page_utils.html#VehicleHistoryInformation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.page_utils.VehicleHistoryInformation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum class to represent vehicle history information.</p>
+<p>Possible values:
+- MOT_STATUS: Represents the MOT status information, its value is css selector used to obtain mot information.
+- INSURANCE_STATUS: Represents the insurance status information, its value is css selector used to obtain mot information.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.page_utils.VehicleHistoryInformation.INSURANCE_STATUS">
+<span class="sig-name descname"><span class="pre">INSURANCE_STATUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.oc</span> <span class="pre">.strong'</span></em><a class="headerlink" href="#app.service.page_utils.VehicleHistoryInformation.INSURANCE_STATUS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.service.page_utils.VehicleHistoryInformation.MOT_STATUS">
+<span class="sig-name descname"><span class="pre">MOT_STATUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.tech</span> <span class="pre">.strong'</span></em><a class="headerlink" href="#app.service.page_utils.VehicleHistoryInformation.MOT_STATUS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.service.page_utils.map_report_result">
+<span class="sig-prename descclassname"><span class="pre">app.service.page_utils.</span></span><span class="sig-name descname"><span class="pre">map_report_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.service.page_utils.VehicleHistoryInformation" title="app.service.page_utils.VehicleHistoryInformation"><span class="pre">VehicleHistoryInformation</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.service.page_utils.VehicleHistoryInformation" title="app.service.page_utils.VehicleHistoryInformation"><span class="pre">VehicleHistoryInformation</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/app/service/page_utils.html#map_report_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.service.page_utils.map_report_result" title="Link to this definition"></a></dt>
+<dd><p>Maps the result dictionary containing VehicleHistoryInformation as keys and corresponding str values
+to a new dictionary with mapped keys based on the input values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> – The input dictionary containing VehicleHistoryInformation as keys and str as values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new dictionary with mapped keys based on the input values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-app.service">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app.service" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app.routes.html" class="btn btn-neutral float-left" title="app.routes package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="test.html" class="btn btn-neutral float-right" title="test package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DSmolke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

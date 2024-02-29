@@ -11,6 +11,8 @@ gunicorn = "*"
 pytest = "*"
 coverage = {extras = ["toml"], version = "*"}
 pytest-mock = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 
 [dev-packages]
 

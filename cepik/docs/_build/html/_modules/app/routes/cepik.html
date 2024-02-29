@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.routes.cepik &mdash; cepik-microservice 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            cepik-microservice
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">cepik</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">cepik-microservice</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">app.routes.cepik</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for app.routes.cepik</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+
+<span class="kn">from</span> <span class="nn">app.service.models</span> <span class="kn">import</span> <span class="n">CarDetails</span>
+<span class="kn">from</span> <span class="nn">app.service.cepik_service</span> <span class="kn">import</span> <span class="n">CepikSevice</span>
+<span class="kn">from</span> <span class="nn">app.service.configuration</span> <span class="kn">import</span> <span class="n">driver_linux</span>
+<span class="kn">from</span> <span class="nn">app.service.page_utils</span> <span class="kn">import</span> <span class="n">map_report_result</span>
+
+<span class="n">Cepik</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;cepik&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="insurance_and_mot_details">
+<a class="viewcode-back" href="../../../app.routes.html#app.routes.cepik.insurance_and_mot_details">[docs]</a>
+<span class="nd">@Cepik</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/car_status&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">insurance_and_mot_details</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :return: A JSON response containing insurance and MOT details for a given car.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">car</span> <span class="o">=</span> <span class="n">CarDetails</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;first_registration_date&#39;</span><span class="p">])</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">map_report_result</span><span class="p">(</span><span class="n">CepikSevice</span><span class="p">(</span><span class="n">driver_linux</span><span class="p">,</span> <span class="n">car_details</span><span class="o">=</span><span class="n">car</span><span class="p">)</span><span class="o">.</span><span class="n">get_car_report</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Invalid car details&#39;</span><span class="p">},</span> <span class="mi">400</span></div>
+
+
+
+<div class="viewcode-block" id="get_full_report_url">
+<a class="viewcode-back" href="../../../app.routes.html#app.routes.cepik.get_full_report_url">[docs]</a>
+<span class="nd">@Cepik</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/with_full_report_url&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_full_report_url</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves the full report URL for a given car using its registration, VIN, and first registration date.</span>
+
+<span class="sd">    :return: a dictionary containing the car details and the full report URL</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">car</span> <span class="o">=</span> <span class="n">CarDetails</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;first_registration_date&#39;</span><span class="p">])</span>
+        <span class="n">full_report_url</span> <span class="o">=</span> <span class="n">CepikSevice</span><span class="p">(</span><span class="n">driver_linux</span><span class="p">,</span> <span class="n">car_details</span><span class="o">=</span><span class="n">car</span><span class="p">)</span><span class="o">.</span><span class="n">get_full_vehicle_history_report_url</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">car</span><span class="o">.</span><span class="n">as_dict</span><span class="p">(),</span> <span class="s1">&#39;full_report_url&#39;</span><span class="p">:</span> <span class="n">full_report_url</span><span class="p">}</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Invalid car details&#39;</span><span class="p">},</span> <span class="mi">400</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, DSmolke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
