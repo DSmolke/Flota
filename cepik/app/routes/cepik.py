@@ -3,7 +3,7 @@ import logging
 from flask import Blueprint, Response, request, jsonify
 
 from app.service.models import CarDetails
-from app.service.cepik_service import CepikSevice
+from app.service.cepik_service import CepikSeviceSeleniumImpl
 from app.service.configuration import driver_linux
 from app.service.page_utils import map_report_result
 
@@ -19,7 +19,7 @@ def insurance_and_mot_details() -> Response:
     data = request.get_json()
     try:
         car = CarDetails(data['registration'], data['vin'], data['first_registration_date'])
-        res = map_report_result(CepikSevice(driver_linux, car_details=car).get_car_report())
+        res = map_report_result(CepikSeviceSeleniumImpl(driver_linux, car_details=car).get_car_report())
 
         return jsonify(res)
     except Exception as e:
@@ -37,7 +37,7 @@ def get_full_report_url() -> Response:
     data = request.get_json()
     try:
         car = CarDetails(data['registration'], data['vin'], data['first_registration_date'])
-        full_report_url = CepikSevice(driver_linux, car_details=car).get_full_vehicle_history_report_url()
+        full_report_url = CepikSeviceSeleniumImpl(driver_linux, car_details=car).get_full_vehicle_history_report_url()
         return {**car.as_dict(), 'full_report_url': full_report_url}
 
     except Exception as e:

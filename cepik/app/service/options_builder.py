@@ -1,6 +1,8 @@
-from dataclasses import dataclass
 from typing import Self
+
 from selenium.webdriver.chrome.options import Options
+
+from app.env_variables import DOWNLOADS_PATH
 
 
 class ChromeOptionsBuilder:
@@ -55,6 +57,14 @@ class ChromeOptionsBuilder:
         :return: Self instance.
         """
         self.options.add_argument('--disable-dev-shm-usage')
+        return self
+
+    def download_pdf(self) -> Self:
+        self.options.add_experimental_option('prefs', {
+            "download.default_directory": DOWNLOADS_PATH,  # Change default directory for downloads
+            "download.prompt_for_download": True,  # To auto download the file
+            "download.directory_upgrade": True
+        })
         return self
 
     def build(self) -> Options:

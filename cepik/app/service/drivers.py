@@ -1,7 +1,30 @@
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
+
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
+
+class Driver(ABC):
+    """
+    The Driver class is an abstract base class that defines the interface for creating drivers.
+
+    This class is intended to be subclassed by driver implementations that provide specific functionality for creating drivers.
+
+    Methods
+    -------
+    create()
+        This method is responsible for creating a driver instance.
+
+        Raises
+        ------
+        NotImplementedError
+            This exception is raised if the create method is not implemented by a subclass.
+    """
+    @abstractmethod
+    def create(self) -> object:
+        pass
+
 
 @dataclass
 class ChromeDriver:

@@ -13,6 +13,7 @@ coverage = {extras = ["toml"], version = "*"}
 pytest-mock = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+httpx = "*"
 
 [dev-packages]
 

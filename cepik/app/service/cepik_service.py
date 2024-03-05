@@ -1,14 +1,43 @@
-import logging
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
+
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 
+from app.env_variables import DOWNLOADS_PATH
+from app.resources.car_report_manager import CarReportManagerImpl
+from app.resources.file_catalog_service import FileCatalogServiceImpl
+from app.resources.file_resourcer import FileResourcerImpl
+from app.resources.form_files_service import FormFilesServiceImpl
 from app.service.models import CarDetails
 from app.service.page_utils import VehicleHistoryInformation
 
 
+class CepikService(ABC):
+    """Interface for retrieving vehicle information from CEPiK database."""
+
+    @abstractmethod
+    def get_car_report(self) -> dict[VehicleHistoryInformation, str]:
+        """
+        Returns a dictionary containing the vehicle history information and report status.
+
+        :return: Dictionary with keys as VehicleHistoryInformation objects and values as report status strings.
+        :rtype: dict[VehicleHistoryInformation, str]
+        """
+        pass
+
+    @abstractmethod
+    def get_full_vehicle_history_report_url(self) -> str:
+        """
+        Get the URL for generating a full vehicle history report.
+
+        :return: A string representing the URL for generating a full vehicle history report.
+        """
+        pass
+
+
 @dataclass(frozen=True)
-class CepikSevice:
+class CepikSeviceSeleniumImpl(CepikService):
     """
         Class representing a Cepik service for retrieving car reports.
 
@@ -79,5 +108,14 @@ class CepikSevice:
         :rtype: str
         """
         self._login()
-        url = self.driver.find_element(by=By.CSS_SELECTOR, value='.btn-pdf-wrapper a').get_attribute('href')
-        return url
+        report_url = self.driver.find_element(by=By.CSS_SELECTOR, value='.btn-pdf-wrapper a').get_attribute('href')
+        self.driver.get(report_url)
+
+        file_catalog_service = FileCatalogServiceImpl(DOWNLOADS_PATH)
+        current_report = file_catalog_service.get_current_file_path()
+        final_url = CarReportManagerImpl(
+            FormFilesServiceImpl(current_report),
+            FileResourcerImpl('http://aws-resources-service:8003/file')
+        ).persist_car_report_and_get_url()
+        file_catalog_service.delete_all_files()
+        return final_url
