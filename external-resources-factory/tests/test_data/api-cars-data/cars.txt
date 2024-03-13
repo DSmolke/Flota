@@ -1,0 +1,2 @@
+registration,vin,make,model,first_registration_date,production_year,mileage,fuel_consumption,fuel_type_id,vehicle_status_id
+DPL96RR,4Y1SL65848Z411439,BMW,SERIES 1,2022-01-01,2022,200000,6.22,1,1

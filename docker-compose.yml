@@ -252,7 +252,7 @@ services:
       context: ./cars
       dockerfile: Dockerfile
 
-    command: gunicorn --bind 0.0.0.0:8001 --workers 6 'app.create_app:main()' --reload
+    command: gunicorn --bind 0.0.0.0:8001 --workers 1 'app.create_app:main()' --reload
     volumes:
       - ./cars:/webapp
 
@@ -276,7 +276,7 @@ services:
       context: ./mots
       dockerfile: Dockerfile
 
-    command: gunicorn --bind 0.0.0.0:8002 --workers 6 'app.create_app:main()' --reload
+    command: gunicorn --bind 0.0.0.0:8002 --workers 1 'app.create_app:main()' --reload
     volumes:
       - ./mots:/webapp
 
@@ -299,7 +299,7 @@ services:
       context: ./aws-resources
       dockerfile: Dockerfile
 
-    command: gunicorn --bind 0.0.0.0:8003 --workers 6 'app.create_app:main()' --reload
+    command: gunicorn --bind 0.0.0.0:8003 --workers 1 'app.create_app:main()' --reload
     volumes:
       - ./aws-resources:/webapp
 
@@ -318,7 +318,7 @@ services:
       context: ./insurances
       dockerfile: Dockerfile
 
-    command: gunicorn --bind 0.0.0.0:8004 --workers 6 'app.create_app:main()' --reload
+    command: gunicorn --bind 0.0.0.0:8004 --workers 1 'app.create_app:main()' --reload
     volumes:
       - ./insurances:/webapp
 
@@ -343,7 +343,7 @@ services:
       context: ./repairs
       dockerfile: Dockerfile
 
-    command: gunicorn --bind 0.0.0.0:8005 --workers 6 'app.create_app:main()' --reload
+    command: gunicorn --bind 0.0.0.0:8005 --workers 1 'app.create_app:main()' --reload
     volumes:
       - ./repairs:/webapp
 
@@ -373,6 +373,7 @@ services:
       - ./cepik:/webapp
 
 
+
     ports:
       - "8006:8006"
     networks:
@@ -380,12 +381,33 @@ services:
         aliases:
           - cepik-service
 
+#   ===================================================================================
+#   EXTERNAL-RESOURCES-FACTORY MICROSERVICE
+#   ===================================================================================
+  external-resources-factory:
+    build:
+      context: ./external-resources-factory
+      dockerfile: Dockerfile
+
+    command: gunicorn --bind 0.0.0.0:8007 --workers 1 'app.create_app:main()' --reload
+    volumes:
+      - ./external-resources-factory:/webapp
+
+
+
+    ports:
+      - "8007:8007"
+    networks:
+      flota-network:
+        aliases:
+          - external-resources-factory
+
   api-gateway:
     build:
       context: ./api-gateway
       dockerfile: Dockerfile
 
-    command: gunicorn --bind 0.0.0.0:8000 --workers 6 'app.create_app:main()' --reload
+    command: gunicorn --bind 0.0.0.0:8000 --workers 1 'app.create_app:main()' --reload
 
     volumes:
       - ./api-gateway:/webapp
