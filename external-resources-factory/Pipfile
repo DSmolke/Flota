@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+jsonlines = "*"
+pytest = "*"
+easy-crud-repo-service = "*"
+easyvalid-data-validator = "*"
+dbm-database-service = "*"
+pytest-mock = "*"
+easyquery-query-builder = "*"
+openpyxl = "*"
+flask = "*"
+gunicorn = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
