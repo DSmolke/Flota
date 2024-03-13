@@ -1,4 +1,3 @@
-import logging
 from flask import Flask
 from app.routes.cepik import Cepik
 
