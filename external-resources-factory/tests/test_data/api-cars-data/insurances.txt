@@ -1,0 +1,3 @@
+legal_identifier,start_date,end_date,car_registration_number,active
+XXX/XXX/XXX/XXXX/XXXX,2022-01-01,2023-01-01,DPL96RR,1
+YYY/YYY/YYY/YYYY/YYYY,2022-01-02,2023-01-02,DPL0000,1

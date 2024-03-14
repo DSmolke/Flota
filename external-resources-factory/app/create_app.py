@@ -1,6 +1,7 @@
 from flask import Flask
 
 from app.routes.cars import load_cars_data_blueprint
+from app.routes.insurances import load_insurances_data_blueprint
 from app.routes.mots import load_mots_data_blueprint
 
 app = Flask(__name__)
@@ -15,5 +16,6 @@ def main():
     with app.app_context():
         app.register_blueprint(load_cars_data_blueprint)
         app.register_blueprint(load_mots_data_blueprint)
+        app.register_blueprint(load_insurances_data_blueprint)
 
     return app
