@@ -10,7 +10,7 @@ from app.factories import (
     FromJsonFileToCarsWithExpectedConstraintsDataFactory
 )
 from app.routes.utils import save_file_from_request, delete_file_after_use
-from app.validators.configuration import constraints
+from app.validators.configuration import car_model_constraints
 
 load_cars_data_blueprint = Blueprint('load_cars_data', __name__, url_prefix='/load_cars_data')
 
@@ -35,7 +35,7 @@ def load_cars_from_csv() -> Response:
     try:
         filename = save_file_from_request(request)
         processor = DataProcesor(
-            FromCsvToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', constraints))
+            FromCsvToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', car_model_constraints))
         loaded_cars = processor.process()
         delete_file_after_use(filename=filename)
         return {'all_cars': [c.as_dict() for c in loaded_cars]}, 200
@@ -62,7 +62,7 @@ def load_cars_from_json() -> Response:
     try:
         filename = save_file_from_request(request)
         processor = DataProcesor(
-            FromJsonFileToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', constraints))
+            FromJsonFileToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', car_model_constraints))
         loaded_cars = processor.process()
         delete_file_after_use(filename=filename)
         return {'all_cars': [c.as_dict() for c in loaded_cars]}, 200
@@ -86,7 +86,7 @@ def load_cars_from_jsonl() -> Response:
     try:
         filename = save_file_from_request(request)
         processor = DataProcesor(
-            FromJsonlToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', constraints))
+            FromJsonlToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', car_model_constraints))
         loaded_cars = processor.process()
         delete_file_after_use(filename=filename)
         return {'all_cars': [c.as_dict() for c in loaded_cars]}, 200
@@ -115,7 +115,7 @@ def load_cars_from_txt() -> Response:
     try:
         filename = save_file_from_request(request)
         processor = DataProcesor(
-            FromTxtToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', constraints))
+            FromTxtToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}', car_model_constraints))
         loaded_cars = processor.process()
         delete_file_after_use(filename=filename)
         return {'all_cars': [c.as_dict() for c in loaded_cars]}, 200
@@ -144,7 +144,7 @@ def load_cars_from_xlsx() -> Response:
         filename = save_file_from_request(request)
         processor = DataProcesor(
             FromXlsxStrAdapterToCarsWithExpectedConstraintsDataFactory(f'{Path.cwd().absolute()}/{filename}',
-                                                                       constraints))
+                                                                       car_model_constraints))
         loaded_cars = processor.process()
         delete_file_after_use(filename=filename)
         return {'all_cars': [c.as_dict() for c in loaded_cars]}, 200
