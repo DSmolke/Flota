@@ -1,11 +1,12 @@
 from typing import Self
 
 from app.converters.converter import Converter
-from app.models.car import CarInterface, Car
+from app.models.car import Car
+from app.models.model_interface import ModelInterface
 
 
 class ToCarsConverter(Converter):
-    def convert(self, data: list[dict[str, CarInterface]]) -> list[CarInterface]:
+    def convert(self, data: list[dict[str, ModelInterface]]) -> list[ModelInterface]:
         """
         :param data: list of dict representations of car
         :return: list of Cars

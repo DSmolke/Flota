@@ -1,66 +1,11 @@
-from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Any, Self
 
-
-class CarInterface(ABC):
-    """
-    CarInterface is an abstract class that defines the interface for a car object.
-
-    Methods:
-        - as_dict: Convert the car object to a dictionary.
-            Returns:
-                dict[str, Any]: The car object as a dictionary.
-
-        - from_dict: Create a car object from a dictionary.
-            Parameters:
-                data (dict[str, Any]): The dictionary containing the car object data.
-            Returns:
-                Self: A new car object created from the dictionary.
-    """
-    @abstractmethod
-    def as_dict(self) -> dict[str, Any]:
-        """
-        Return the object as a dictionary.
-
-        :return: A dictionary containing the attributes of the object.
-        :rtype: dict[str, Any]
-        """
-        pass
-
-    @classmethod
-    @abstractmethod
-    def from_dict(cls, data: dict[str, Any]) -> Self:
-        """
-
-        Class Method: from_dict
-
-        Description:
-        This method is responsible for creating an instance of the current class using the provided dictionary data.
-
-        Parameters:
-        - cls: The class object itself.
-        - data: A dictionary containing the data necessary to create the instance.
-
-        Returns:
-        - The newly created instance.
-
-        Example Usage:
-        ```
-        data = {
-            'attribute_1': value_1,
-            'attribute_2': value_2,
-        }
-
-        instance = ClassName.from_dict(data)
-        ```
-
-        """
-        pass
+from app.models.model_interface import ModelInterface
 
 
 @dataclass
-class Car(CarInterface):
+class Car(ModelInterface):
     registration: str
     vin: str
     make: str
