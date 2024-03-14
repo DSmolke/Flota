@@ -177,7 +177,7 @@ def test_top_customer(mocker) -> None:
 | repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
 | aws-resources |                                                                             |                                                                        |
 | cepik         | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
-
+| external-resources-factory         |         |       |
 
 <br/>
 <br/>
@@ -205,8 +205,8 @@ def test_top_customer(mocker) -> None:
 | Zarządzenie naprawami samochodów                                           | ✅    |              |
 | Walidowanie Przeglądów i OC używając historia.pojazdu.gov                  | ✅    |              |
 | Generowanie pełnych raportów histori pojazdu używając historia.pojazdu.gov | ✅    |              |
-| Ładowanie Car, Mot, Insurance z istniejących źródeł danych                 | 🛠️  |              |
-| Operacje CRUD na encji Driver                                              | 🔜   |              |
+| Ładowanie Car, Mot, Insurance z istniejących źródeł danych                 | ✅  |              |
+| Operacje CRUD na encji Driver                                              | 🛠️   |              |
 | Powiadamianie kierowcy o kończącym się przeglądzie i OC                    | 🔜   |              |
 ✅ zrobione
 🛠️ w trakcie
