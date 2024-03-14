@@ -170,6 +170,7 @@ def test_top_customer(mocker) -> None:
 | repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
 | aws-resources |                                                                             |                                                                        |
 | cepik         | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
+| external-resources-factory         |         |       |
 
 
 <br/>
@@ -198,8 +199,8 @@ def test_top_customer(mocker) -> None:
 | Managing cars repairs                                          | ✅     |      |
 | Validating MOT and Insurance using historia.pojazdu.gov        | ✅     |      |
 | Generating full car history reports using historia.pojazdu.gov | ✅     |      |
-| Loading Cars, Mots, Insurances data from existing sources      | 🛠️   |      |
-| CRUD Operations on Driver                                      | 🔜    |      |
+| Loading Cars, Mots, Insurances data from existing sources      | ✅   |      |
+| CRUD Operations on Driver                                      | 🛠️    |      |
 | Notifying Driver about expiring Mot and Insurance              | 🔜    |      |
 
 ✅ done
