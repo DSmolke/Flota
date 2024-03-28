@@ -183,7 +183,7 @@ def test_top_customer(mocker) -> None:
 ## Jak używać
 <hr>
 
-[Uruchomiona aplikacja](README.md) 🚀
+[Uruchomiona aplikacja](README.md) 🚀 - SOON
 
 <br/>
 <br/>
