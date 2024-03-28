@@ -30,7 +30,6 @@ Read in different languages: ![pl](https://github.com/DSmolke/Flota/assets/10628
 
 
 
-https://github.com/DSmolke/Flota/assets/106284705/4205f5be-4b1b-4c26-8517-232cdef0ac07
 
 
 
