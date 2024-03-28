@@ -178,7 +178,7 @@ def test_top_customer(mocker) -> None:
 ## How to use
 <hr>
 
-[Deployed app](README.md) 🚀
+[Deployed app](README.md) 🚀 SOON
 
 <br/>
 <br/>
