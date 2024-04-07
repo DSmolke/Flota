@@ -176,6 +176,7 @@ def test_top_customer(mocker) -> None:
 | aws-resources |                                                                             |                                                                        |
 | cepik         | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
 | external-resources-factory         |         |       |
+| drivers                    | [link](https://dsmolke.github.io/Flota.drivers.wiki.github.io/modules)                                                                    | [link](https://dsmolke.github.io/Flota.drivers.coverage.github.io/)    |
 
 <br/>
 <br/>

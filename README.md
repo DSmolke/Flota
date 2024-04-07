@@ -160,16 +160,17 @@ def test_top_customer(mocker) -> None:
 <hr>
 
 
-| microservice  | wiki                                                                        | coverage                                                               |
-|---------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------|
-| api-gateway   |                                                                             |                                                                        |
-| cars          | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/)       |
-| mots          | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/)       |
-| insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
-| repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
-| aws-resources |                                                                             |                                                                        |
-| cepik         | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
-| external-resources-factory         |         |       |
+| microservice               | wiki                                                                        | coverage                                                               |
+|----------------------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------|
+| api-gateway                |                                                                             |                                                                        |
+| cars                       | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/)       |
+| mots                       | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/)       |
+| insurances                 | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
+| repairs                    | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
+| aws-resources              |                                                                             |                                                                        |
+| cepik                      | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
+| external-resources-factory |                                                                             |                                                                        |
+| drivers                    | [link](https://dsmolke.github.io/Flota.drivers.wiki.github.io/modules)                                                                    | [link](https://dsmolke.github.io/Flota.drivers.coverage.github.io/)    |
 
 
 <br/>
