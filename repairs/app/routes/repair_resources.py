@@ -5,6 +5,7 @@ from flask_restful import Resource, reqparse, Api
 from sqlalchemy.exc import IntegrityError
 from app.validator.repair import repair_schema
 from app.db.model import RepairModel
+from app.db.configuration import sa
 
 logging.basicConfig(level=logging.INFO)
 
