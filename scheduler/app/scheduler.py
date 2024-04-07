@@ -6,7 +6,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def notify_about_ending_liabilities():
-    httpx.get("http://notifications-service:8009/notify-ending-mots-or-insurances/4", timeout=60)
+    httpx.get("http://notifications-service:8009/notify-ending-mots-or-insurances/7", timeout=60)
 
 
 schedule.every().day.at("08:00", "Europe/Amsterdam").do(notify_about_ending_liabilities)

@@ -171,6 +171,8 @@ def test_top_customer(mocker) -> None:
 | cepik                      | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
 | external-resources-factory |                                                                             |                                                                        |
 | drivers                    | [link](https://dsmolke.github.io/Flota.drivers.wiki.github.io/modules)                                                                    | [link](https://dsmolke.github.io/Flota.drivers.coverage.github.io/)    |
+| notifications              |                                                                     |     |
+| scheduler                  |                                                                     |     |
 
 
 <br/>
@@ -200,8 +202,11 @@ def test_top_customer(mocker) -> None:
 | Validating MOT and Insurance using historia.pojazdu.gov        | ✅     |      |
 | Generating full car history reports using historia.pojazdu.gov | ✅     |      |
 | Loading Cars, Mots, Insurances data from existing sources      | ✅   |      |
-| CRUD Operations on Driver                                      | 🛠️    |      |
-| Notifying Driver about expiring Mot and Insurance              | 🔜    |      |
+| CRUD Operations on Driver                                      | ✅    |      |
+| Notifying Driver about expiring Mot and Insurance              | ✅    |      |
+| Scheduling system notifications                                | ✅    |      |
+| UI                                                                         | 🛠️   |              |
+
 
 ✅ done
 🛠️ in progress

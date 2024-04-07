@@ -166,17 +166,19 @@ def test_top_customer(mocker) -> None:
 <hr>
 
 
-| mikroserwis   | wikipedia                                                                   | pokrycie testami                                                       |
-|---------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------|
-| api-gateway   |                                                                             |                                                                        |
-| cars          | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/)       |
-| mots          | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/)       |
-| insurances    | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
-| repairs       | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
-| aws-resources |                                                                             |                                                                        |
-| cepik         | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
-| external-resources-factory         |         |       |
+| mikroserwis                | wikipedia                                                                   | pokrycie testami                                                       |
+|----------------------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------|
+| api-gateway                |                                                                             |                                                                        |
+| cars                       | [link](https://dsmolke.github.io/Flota.cars.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.cars.coverage.github.io/)       |
+| mots                       | [link](https://dsmolke.github.io/Flota.mots.wiki.github.io/modules.html)    | [link](https://dsmolke.github.io/Flota.mots.coverage.github.io/)       |
+| insurances                 | [link](https://dsmolke.github.io/Flota.insurances.wiki.github.io/)          | [link](https://dsmolke.github.io/Flota.insurances.coverage.github.io/) |
+| repairs                    | [link](https://dsmolke.github.io/Flota.repairs.wiki.github.io/modules.html) | [link](https://dsmolke.github.io/Flota.repairs.coverage.github.io/)    |
+| aws-resources              |                                                                             |                                                                        |
+| cepik                      | [link](https://dsmolke.github.io/Flota.cepik.wiki.github.io/modules)        | [link](https://dsmolke.github.io/Flota.cepik.coverage.github.io/)      |
+| external-resources-factory |         |       |
 | drivers                    | [link](https://dsmolke.github.io/Flota.drivers.wiki.github.io/modules)                                                                    | [link](https://dsmolke.github.io/Flota.drivers.coverage.github.io/)    |
+| notifications              |                                                                     |     |
+| scheduler                  |                                                                     |     |
 
 <br/>
 <br/>
@@ -205,8 +207,10 @@ def test_top_customer(mocker) -> None:
 | Walidowanie Przeglądów i OC używając historia.pojazdu.gov                  | ✅    |              |
 | Generowanie pełnych raportów histori pojazdu używając historia.pojazdu.gov | ✅    |              |
 | Ładowanie Car, Mot, Insurance z istniejących źródeł danych                 | ✅  |              |
-| Operacje CRUD na encji Driver                                              | 🛠️   |              |
-| Powiadamianie kierowcy o kończącym się przeglądzie i OC                    | 🔜   |              |
+| Operacje CRUD na encji Driver                                              | ✅   |              |
+| Powiadamianie kierowcy o kończącym się przeglądzie i OC                    | ✅   |              |
+| Harmonogramowanie powiadomień systemu                                      | ✅   |              |
+| UI                                                                         | 🛠️   |              |
 ✅ zrobione
 🛠️ w trakcie
 🔜 zaplanowane
