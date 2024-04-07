@@ -245,6 +245,53 @@ services:
       - flota-network
 
 #  # ===================================================================================
+#  # DRIVERS MAIN DATABASE
+#  # ===================================================================================
+  mysql_drivers:
+    image: mysql:latest
+    volumes:
+      - mysql_drivers:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_1
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user1234
+      MYSQL_TCP_PORT: 3315
+    ports:
+      - '3317:3317'
+    expose:
+      - 3317
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+    networks:
+      - flota-network
+
+#  # ===================================================================================
+#  # DRIVERS TEST DATABASE
+#  # ===================================================================================
+  mysql_test_drivers:
+    image: mysql:latest
+    volumes:
+      - mysql_test_drivers:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user1234
+      MYSQL_TCP_PORT: 3316
+    ports:
+      - '3318:3318'
+    expose:
+      - 3318
+
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+    networks:
+      - flota-network
+
+#  # ===================================================================================
 #  # CARS SERVICE
 #  # ===================================================================================
   cars:
@@ -401,6 +448,64 @@ services:
       flota-network:
         aliases:
           - external-resources-factory
+  # ===================================================================================
+  # DRIVERS MICROSERVICE
+  # ===================================================================================
+  drivers:
+    build:
+      context: ./drivers
+      dockerfile: Dockerfile
+
+    command: gunicorn --bind 0.0.0.0:8008 --workers 1 'app.create_app:main()' --reload
+    volumes:
+      - ./drivers:/webapp
+
+    depends_on:
+      mysql_drivers:
+        condition: service_healthy
+      mysql_test_drivers:
+        condition: service_healthy
+
+    ports:
+      - "8008:8008"
+    networks:
+      flota-network:
+        aliases:
+          - drivers-service
+
+  # ===================================================================================
+  # NOTIFICATIONS MICROSERVICE
+  # ===================================================================================
+  notifications:
+    build:
+      context: ./notifications
+      dockerfile: Dockerfile
+
+    command: gunicorn --bind 0.0.0.0:8009 --workers 1 'app.create_app:main()' --reload
+    volumes:
+      - ./notifications:/webapp
+
+    ports:
+      - "8009:8009"
+    networks:
+      flota-network:
+        aliases:
+          - notifications-service
+  # ===================================================================================
+  # SCHEDULER MICROSERVICE
+  # ===================================================================================
+  scheduler:
+    build:
+      context: ./scheduler
+      dockerfile: Dockerfile
+
+    command: python ./app/scheduler.py
+    volumes:
+      - ./scheduler:/webapp
+    networks:
+      flota-network:
+        aliases:
+          - scheduler-service
 
   api-gateway:
     build:
@@ -446,5 +551,7 @@ volumes:
   mysql_test_insurances:
   mysql_repairs:
   mysql_test_repairs:
+  mysql_drivers:
+  mysql_test_drivers:
 networks:
   flota-network:
