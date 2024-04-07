@@ -7,7 +7,6 @@ from app.env_variables import SQLALCHEMY_DATABASE_URI
 from app.db.configuration import sa
 from app.routes.driver import DriverEndPointsMapper
 
-
 app = Flask(__name__)
 
 
@@ -22,33 +21,32 @@ def main() -> Flask:
     # -------------------------------------------------------------
     # CORS CONFIGURATION
     # -------------------------------------------------------------
-    # CORS(app, resources={
-    #     '/*': {
-    #         'allow_headers': [
-    #             'accept',
-    #             'accept-encoding',
-    #             'authorization',
-    #             'content-type'
-    #         ],
-    #         'methods': [
-    #             'delete',
-    #             'get',
-    #             'post',
-    #             'patch',
-    #         ],
-    #         'origins': [
-    #             'http://localhost:8000',
-    #             'http://localhost:80',
-    #         ]
-    #     }
-    # })
+    CORS(app, resources={
+        '/*': {
+            'allow_headers': [
+                'accept',
+                'accept-encoding',
+                'authorization',
+                'content-type'
+            ],
+            'methods': [
+                'delete',
+                'get',
+                'post',
+                'patch',
+            ],
+            'origins': [
+                'http://localhost:8000',
+                'http://localhost:80',
+            ]
+        }
+    })
 
     # -------------------------------------------------------------
     # API AND ENDPOINTS CONFIG
     # -------------------------------------------------------------
     api = Api(app)
     DriverEndPointsMapper(api).init_endpoints()
-
 
     # -------------------------------------------------------------
     # MIGRATION CONFIGURATION

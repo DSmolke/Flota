@@ -1,7 +1,7 @@
 from schemadict import schemadict
 
 """
-repair_schema implements .validate() method which will return error if any of dict keys won't meet declared constraints
+driver_schema implements .validate() method which will return error if any of dict keys won't meet declared constraints
 """
 
 driver_schema = schemadict({
