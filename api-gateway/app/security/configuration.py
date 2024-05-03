@@ -62,8 +62,9 @@ def configure_security(app):
         }
 
         response = make_response(response_body, 201)
-        response.set_cookie(key='access_token', value=access_token, httponly=True, secure=True)
-        response.set_cookie(key='refresh_token', value=refresh_token, httponly=True, secure=True)
+        # ---------- [ HTTPS Version ] ----------
+        # response.set_cookie(key='access_token', value=access_token, httponly=True, secure=True)
+        # response.set_cookie(key='refresh_token', value=refresh_token, httponly=True, secure=True)
 
         return response
 
@@ -75,6 +76,7 @@ def configure_security(app):
 
         request_data = request.get_json()
         refresh_token = request_data.get('refresh_token', '')
+        # ---------- [ HTTPS Version ] ----------
         # refresh_token = request.cookies['refresh_token']
 
         try:
