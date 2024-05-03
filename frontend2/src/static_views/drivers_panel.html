@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <h1>Drivers panel</h1>
+
+
+
+    <button class="btn btn-primary mb-3 float-end">Create driver</button>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="first_name">First name:</label>
+                <input type="text" class="form-control is-valid" id="first_name">
+                <div class="invalid-feedback">Please enter your first name.</div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="last_name">Last name:</label>
+                <input type="text" class="form-control is-invalid" id="last_name">
+                <div class="invalid-feedback">Please enter your last name.</div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control is-invalid" id="email">
+                <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="phone_number">Phone number:</label>
+                <input type="text" class="form-control is-invalid" id="phone_number">
+                <div class="invalid-feedback">Please enter a valid phone number.</div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="car_registration">Car registration:</label>
+                <input type="text" class="form-control is-invalid" id="car_registration">
+                <div class="invalid-feedback">Please enter car registration.</div>
+            </div>
+            <div class="form-group col-md-4">
+                <button class="btn btn-success mt-3">Add</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Car registration</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Damian</td>
+            <td>Smolczyński</td>
+            <td>d.smolczynski1@gmail.com</td>
+            <td>570688764</td>
+            <td>WZ275EL</td>
+            <td><button class="btn btn-success">Edit</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Edit Object</div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First name:</label>
+                            <input type="text" class="form-control is-valid" id="first_name" value="Damian">
+                            <div class="invalid-feedback">Please enter first name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last name:</label>
+                            <input type="text" class="form-control is-invalid" id="last_name">
+                            <div class="invalid-feedback">Please enter last name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control is-invalid" id="email">
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone number:</label>
+                            <input type="text" class="form-control is-invalid" id="phone_number">
+                            <div class="invalid-feedback">Please enter a valid phone number.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="car_registration" class="form-label">Car registration:</label>
+                            <input type="text" class="form-control is-invalid" id="car_registration">
+                            <div class="invalid-feedback">Please enter car registration.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
